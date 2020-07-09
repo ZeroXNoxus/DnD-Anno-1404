@@ -10,7 +10,7 @@ $(document).ready(function(){
         }).done(function(e) {
             $( this ).addClass( "done" );
         });
-    })
+    });
 });
 
 /* $.ajax({
