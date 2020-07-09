@@ -13,10 +13,13 @@ $(".label").on("click", function(){
 
 $.ajax({
     url: "test.html",
+    method: "POST",
     context: document.body,
-    complete: function(){
-
+    success: function(e){
+        console.log(e);
+    },
+    complete: function(e){
+        console.log(e);
     }
-  }).done(function() {
-    $( this ).addClass( "done" );
-  });
+  }).done(function() { $( this ).addClass( "done" );
+  }).fail(function() { });
