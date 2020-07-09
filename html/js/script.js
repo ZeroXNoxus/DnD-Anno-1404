@@ -2,10 +2,10 @@ $(document).ready(function(){
     $(".label").on("click", function(){
         var id = this.id;
         $.ajax({
-            url: "test.html",
+            url: "test.html?table="+id+"",
             context: document.body,
             complete: function(e){
-                console.log(e);
+                var response = e.responseText; //estimated response = 'Hallo'
             }
         }).done(function(e) {
             $( this ).addClass( "done" );
