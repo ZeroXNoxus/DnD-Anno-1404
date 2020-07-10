@@ -2,7 +2,7 @@ $(document).ready(function(){
     $(".label").on("click", function(){
         var id = this.id;
         $.ajax({
-            url: "test.html?table="+id+"",
+            url: "test.php?table="+id+"",
             context: document.body,
             complete: function(e){
                 var response = e.responseText; //estimated response = 'Hallo'
