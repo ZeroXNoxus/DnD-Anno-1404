@@ -95,4 +95,5 @@ if ( isset($_SESSION['loggedIn']) )
                     </div>
                 </div>
             </body>
-        </html>'
+        </html>';
+   }
