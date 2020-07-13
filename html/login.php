@@ -36,20 +36,24 @@ if ( isset($_SESSION['loggedIn']) )
                             <div class="row justify-content-end h-100">
                                 <div id="navbar" class="col-4 col-md-12 no-select no-break bold show">
                                     <div class="row mobile d-flex d-md-none">
-                                        <div class="col-12 label-container">Test</div>
-                                        <div class="col-12 label-container">Test</div>
-                                        <div class="col-12 label-container">Test</div>
+                                        <div class="col-12 label" id="Spieler" data-where="" data-row="" data-value="">City</div>
+                                        <div class="col-12 label" id="people">people</div>
+                                        <div class="col-12 label" id="companies">companies</div>
+                                        <div class="col-12 label" id="resources">resources</div>
+                                        <div class="col-12 mt-auto link"><a data-ajax="false" href="index.html?aktion=logout">logout</a></div> 
                                     </div>
                                     <div class="row desktop d-none d-md-flex">
-                                        <div class="col-1 label" id="Spieler" data-where="" data-row="" data-value="">City</div>
-                                        <div class="col-1 label" id="people">people</div>
-                                        <div class="col-1 label" id="companies">companies</div>
-                                        <div class="col-1 label" id="resources">resources</div>
+                                        <div class="col-2 col-lg-1 label" id="Spieler" data-where="" data-row="" data-value="">City</div>
+                                        <div class="col-2 col-lg-1 label" id="people">people</div>
+                                        <div class="col-2 col-lg-1 label" id="companies">companies</div>
+                                        <div class="col-2 col-lg-1 label" id="resources">resources</div>
+                                        <div class="col-2 col-lg-1 ml-auto"><a data-ajax="false" href="index.html?aktion=logout">logout</a></div> 
                                     </div>
                                     
                                 </div>
+                                <div class="col-8 col-md-12">Current script owner:  '. get_current_user() .'</div>
                                 <div class="col-8 col-md-12 response-area">
-                                    <div id="response-container flex-wrap" class="resp-container">
+                                    <div id="response-container" class="resp-container">
                                     </div>
                                 </div>
                             </div>

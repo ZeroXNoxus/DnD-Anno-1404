@@ -1,4 +1,4 @@
-#navbar{ color: #b3101d; background-color:transparent; position: fixed; font-size: 16px; }
+#navbar{ color: #b3101d; background-color:#fff; position: fixed; font-size: 16px; }
 #navbar{
   z-index: 3;
   left: 0;
@@ -13,12 +13,11 @@
 }
 #navbar.show{ width: 33.3%; opacity: 1; }
 .response-area{ 
-    background: #f2f2f2;
+    background: #fff;
     width: 100%;
-    min-height: 100vh;
+    min-height: 95vh;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    box-shadow: 5px 0px 10px lightgrey;
     flex: none;
 }
 .dialog{
@@ -39,19 +38,23 @@
           box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 }
 .login-form>ul{list-style: none;}
+table input{ 
+  border: none;
+  background-color: transparent;
+}
 
 @media (max-width: 767px){ #navbar.show+.response-area{ width: 66.7%; margin-left: 33.3%; } .response-area{ max-width: 100%; }}
 
 /** BREAKPOINT: md | START **/
 @media (min-width: 768px){
   .text-md-nowrap{ white-space: nowrap; }
-  #navbar{ color: #b3101d; background-color: #f2f2f2; font-size: inherit; }
+  #navbar{ color: #b3101d; background-color: #fff; font-size: inherit; }
   #navbar{ height: auto; width: 100%; opacity: 1; }
   .response-area{
     margin-left: auto !important;
     margin-right: auto;
     max-width: 1920px;
-    min-height: 96.5vh;
+    min-height: 90vh;
     margin-top: 30px;
   }
   #navbar.show{ width: 100%; }
