@@ -22,6 +22,7 @@ if ( isset($_SESSION['loggedIn']) )
                 <link rel="stylesheet" href="css/bootstrap.min.css">
                 <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
                 <link rel="stylesheet" href="css/style.css">
+                <script src="https://kit.fontawesome.com/7acfe39345.js" crossorigin="anonymous"></script>
                 <script type="text/javascript" src="js/jQuery-3.4.1.min.js"></script>
                 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
                 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
@@ -51,15 +52,16 @@ if ( isset($_SESSION['loggedIn']) )
                                     </div>
                                     
                                 </div>
-                                <div class="col-8 col-md-12">Current script owner:  '. get_current_user() .'</div>
+                                <div class="d-md-none nav-close-btn"><div class="btn btn-danger"><i class="fas fa-times-circle fa-2x"></i></div></div>
+                                <div class="col-8 col-md-12 toolbar"><button type="button" class="btn btn-primary add_data" data-tab=""><i class="fas fa-plus"></i></button></div>
                                 <div class="col-8 col-md-12 response-area">
-                                    <div id="response-container" class="resp-container">
-                                    </div>
+                                    <div id="response-container" class="resp-container"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="popup"><div class="popup-content container-fluid"></div></div>
             </body>
         </html>';
    }
