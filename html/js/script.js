@@ -32,7 +32,7 @@ $(document).ready(function(){
             }
             table += "</tbody></table>";
             $('.resp-container').append(table);
-            $('.resp-container table').DataTable({ paging: true });
+            $('.resp-container table').DataTable({ paging: true, select: true, ordering: true });
         });
     });
 });
