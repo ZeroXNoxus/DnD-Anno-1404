@@ -85,6 +85,7 @@ $(document).ready(function(){
                     url: "add_row.php?table="+$(this).data('tab'),
                     data: param
                 });
+                $('.popup').hide();
             })
             $('.resp-container table input').off('change');
             $('.resp-container table input:not(.is_pri)').on('change', function(e){
