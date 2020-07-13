@@ -8,7 +8,7 @@ $(document).ready(function(){
             context: document.body,
         }).done(function(r) {
             var response = JSON.parse(r);
-            var table = "<table class='table table-striped table-bordered'>";
+            var table = "<table class='table table-striped table-bordered' data-page-length='25'>";
             var i = 0;
             while(i<response.length){
                 if(i===0){
@@ -32,7 +32,7 @@ $(document).ready(function(){
             }
             table += "</tbody></table>";
             $('.resp-container').append(table);
+            $('.resp-container table').DataTable({ paging: true });
         });
-        //$('.resp-container table').DataTable();
     });
 });
