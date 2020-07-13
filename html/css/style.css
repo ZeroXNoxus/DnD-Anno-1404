@@ -43,7 +43,7 @@ table input{
   background-color: transparent;
 }
 
-@media (max-width: 767px){ #navbar.show+.response-area{ width: 66.7%; margin-left: 33.3%; } .response-area{ max-width: 100%; }}
+@media (max-width: 767px){ #navbar.show+.response-area{ width: 66.7%; margin-left: 33.3%; } .response-area{ max-width: 100%; } }
 
 /** BREAKPOINT: md | START **/
 @media (min-width: 768px){

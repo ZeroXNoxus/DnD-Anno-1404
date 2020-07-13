@@ -65,8 +65,8 @@ if ( isset($_SESSION['loggedIn']) )
    }
    else
    {
-    ?>
-        <html>
+    echo 
+    '<html>
             <head>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab">
                 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -95,7 +95,4 @@ if ( isset($_SESSION['loggedIn']) )
                     </div>
                 </div>
             </body>
-        </html>
-    <?php
-   }
-   ?>
+        </html>'
