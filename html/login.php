@@ -20,9 +20,12 @@ if ( isset($_SESSION['loggedIn']) )
             <head>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab">
                 <link rel="stylesheet" href="css/bootstrap.min.css">
+                <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
                 <link rel="stylesheet" href="css/style.css">
                 <script type="text/javascript" src="js/jQuery-3.4.1.min.js"></script>
                 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+                <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+                <script type="text/javascript" src="js/dataTables.bootstrap4.min.js"></script>
                 <script type="text/javascript" src="js/script.js"></script>
                 <title>DnD 5e City Control</title>
             </head>
@@ -46,11 +49,7 @@ if ( isset($_SESSION['loggedIn']) )
                                     
                                 </div>
                                 <div class="col-8 col-md-12 response-area">
-                                    <div id="response-container-1" class="resp-container">
-                                        <div class="col-12">ZE EXPAMEL CONTENTZ AREA 1</div>
-                                </div>
-                                    <div id="response-container-2" class="resp-container">
-                                        <div class="col-12">ZE EXPAMEL CONTENTZ AREA 2</div>
+                                    <div id="response-container flex-wrap" class="resp-container">
                                     </div>
                                 </div>
                             </div>

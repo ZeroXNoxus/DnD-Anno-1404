@@ -53,7 +53,6 @@
     max-width: 1920px;
     min-height: 96.5vh;
     margin-top: 30px;
-    padding-bottom: 47px;
   }
   #navbar.show{ width: 100%; }
   #navbar .row{ border: 0; }

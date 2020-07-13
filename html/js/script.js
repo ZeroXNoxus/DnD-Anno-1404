@@ -1,46 +1,38 @@
 $(document).ready(function(){
-    $(".label").on("click", function(){
+    $(".label:not(.active)").on("click", function(){
+        if($(this).hasClass('active')){ $('.resp-container').empty(); };
+        $(this).addClass('active');
         var id = this.id;
         $.ajax({
             url: "test.php?table="+id+"&where",
             context: document.body,
         }).done(function(r) {
             var response = JSON.parse(r);
-
+            var table = "<table class='table table-striped table-bordered'>";
+            var i = 0;
             while(i<response.length){
-                response[i]; //Current Object from Response
                 if(i===0){
-                    var n = 0;
-                    var substr = "";
+                    table += "<thead>";
                     for(x in response[i]){
-                        substr += response[i][x]+"</div>";
-                        n++;
+                        table += "<th>";
+                        table += x;
+                        table += "</th>";
                     }
-                    var str = "<div class='row'><div class='col-"+Math.floor(12/n)+"'>"+substr;
+                    table += "</thead>";
+                    table += "<tbody>";
                 }
+                table += "<tr>";
+                for(x in response[i]){
+                    table += "<td>";
+                    table += response[i][x];
+                    table += "</td>";
+                }
+                table += "</tr>";
                 i++;
             }
-
-
-
-            var str = "";
-            var title = "";
-            var col_count = 0;
-            while (i < response.length) {
-                var substr = "";
-                for(x in response[i]){
-                    if(i === 0){
-                        col_count++;
-                        substr += "</div>";
-                    }
-                    console.log(x);
-                }
-                title = "<div class='row'><div class='col-"+(col_count)+" header'>"+substr+"</div>";
-                i++;
-
-              }
-            //$('#response-container-1').append(title);
-            console.log(r);
+            table += "</tbody></table>";
+            $('.resp-container').append(table);
         });
+        //$('.resp-container table').DataTable();
     });
 });
