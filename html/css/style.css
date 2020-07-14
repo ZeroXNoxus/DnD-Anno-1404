@@ -90,7 +90,6 @@
      -moz-box-shadow: none;
           box-shadow: none;
 }
-.pt-3{ padding-top: 30px; }
 .popup{
   width: 100%;
   height: 100%;
@@ -121,7 +120,21 @@ table input{
 }
 table input.is_pri{ pointer-events: none; }
 .dialog-form input.is_pri{ pointer-events: none; }
-  .disabled{ background-color: lightgray; cursor: not-allowed; }
+.dialog-form .header{
+  position: fixed;
+  z-index: 1;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+.dialog-form .footer{
+  position: fixed;
+  bottom: 15px;
+  z-index: 1;
+}
+.dialog-form .form-group{ max-height: 80vh; overflow-y: auto; }
+.dialog-form .form-group .row{ margin-top: 45px; margin-bottom: 30px; } 
+.disabled{ background-color: lightgray; cursor: not-allowed; }
 .table td{ padding: 0 !important; }
 
 @media (max-width: 767px){ #navbar.show+.response-area{ width: 66.7%; margin-left: 33.3%; } .response-area{ max-width: 100%; } }
