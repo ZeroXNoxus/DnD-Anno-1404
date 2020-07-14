@@ -13,8 +13,8 @@ if (isset($user)
 
 if ( isset($_SESSION['loggedIn']) )
    {
-      // eingeloggt, daher Möglichkeit zum Ausloggen geben
-      //<p><a data-ajax="false" href="index.html?aktion=ausloggen">ausloggen</a></p>
+    setcookie("Username", $user, time()+3600);  /* expire in 1 hour */
+    setcookie("Password", $password, time()+3600);  /* expire in 1 hour */
       echo 
       '<html>
             <head>
@@ -22,6 +22,7 @@ if ( isset($_SESSION['loggedIn']) )
                 <link rel="stylesheet" href="css/bootstrap.min.css">
                 <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
                 <link rel="stylesheet" href="css/style.css">
+                <link rel="stylesheet" href="css/loader.css">
                 <script src="https://kit.fontawesome.com/7acfe39345.js" crossorigin="anonymous"></script>
                 <script type="text/javascript" src="js/jQuery-3.4.1.min.js"></script>
                 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
@@ -62,6 +63,7 @@ if ( isset($_SESSION['loggedIn']) )
                     </div>
                 </div>
                 <div class="popup"><div class="popup-content container-fluid"></div></div>
+                <div class="dialog load-dialog" style="display: none;"><div class="loader"></div></div>
             </body>
         </html>';
    }
@@ -99,3 +101,4 @@ if ( isset($_SESSION['loggedIn']) )
             </body>
         </html>';
    }
+   ?>
