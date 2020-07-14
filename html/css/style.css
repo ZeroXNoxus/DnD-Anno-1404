@@ -12,8 +12,15 @@
           transition: all 0.5s ease;
   pointer-events: none;
 }
-.dataTables_wrapper *{ margin:0; }
-.resp-container{ height: 90vh; overflow-Y: auto; }
+.dataTables_wrapper *{ margin:0; text-overflow: ellipsis; }
+.dataTables_wrapper .row:last-child{     
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.resp-container{ height: 82vh; overflow-Y: auto; }
 #navbar.show{ width: 33.3%; opacity: 1; pointer-events: all; }
 #navbar.show ~ div {
   margin-left: 33.3%;
@@ -109,6 +116,8 @@ table input{
   background-color: transparent;
   width: 100%;
   padding: .75rem;
+  padding-right: 0.25rem;
+  padding-left: 0.25rem;
 }
 table input.is_pri{ pointer-events: none; }
 .dialog-form input.is_pri{ pointer-events: none; }
@@ -128,6 +137,7 @@ table input.is_pri{ pointer-events: none; }
     max-width: 1920px;
     min-height: 90vh;
   }
+  .resp-container{ height: 88vh; }
   #navbar.show{ width: 100%; }
   #navbar.show ~ div { width: 100%; }
   #navbar .row{ border: 0; }
