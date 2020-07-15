@@ -56,6 +56,7 @@ if ( isset($_SESSION['loggedIn']) )
                                 </div>
                                 <div class="d-md-none nav-close-btn"><div class="btn btn-danger"><i class="fas fa-times-circle fa-2x"></i></div></div>
                                 <div class="col-8 col-md-12 toolbar">
+                                    <button class="btn btn-danger delete-btn disabled"><i class="fas fa-trash"></i></button>
                                     <button class="btn btn-primary mass-edit-btn"><i class="icon-list-pen"></i></button>
                                     <button class="btn btn-primary edit-btn disabled"><i class="fas fa-pen"></i></button>
                                     <button type="button" class="btn btn-primary insert-btn"><i class="fas fa-plus"></i></button>

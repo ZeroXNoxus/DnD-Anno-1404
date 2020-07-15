@@ -26,13 +26,12 @@ $(document).ready(function(){
     });
 });
 
-function bindEventAll(){
+function bindEventAll(tab){
     var form = $('form');
     form.off('submit');
     form.on('submit',function(e){
         e.stopPropagation();
         e.preventDefault();
-        var tab = $(this).data('tab');
         var input_elements = $(this).find('input');
         var i = 0;
         var param = "";
@@ -75,7 +74,6 @@ function bindEventAll(){
     });
     $('.resp-container table input:not(.is_pri)').off('change');
     $('.resp-container table input:not(.is_pri)').on('change', function(e){
-        console.log(e);
         var tab = e.currentTarget.dataset.tab;
         var name = e.currentTarget.dataset.name;
         var new_val = $(e.currentTarget).val();
@@ -120,6 +118,21 @@ function bindEventAll(){
         }
         $('#popup-update').show().focus();
     });
+    $('.delete-btn').off('click');
+    $('.delete-btn').on('click', function(){
+        var selected = $('.dataTable tr.selected input.is_pri');
+        if(confirm("Sind Sie sicher, dass sie den Eintrag der Tabelle '"+tab+"' mit der ID: '"+selected.val()+"' löschen möchten?")){
+            document.cookie = "qType=DELETE; path=/";
+            $.ajax({
+                url: "php/qRequest.php?table="+tab,
+                data: selected.data('name')+"="+selected.val(),
+                context: document.body
+            }).done(function(r){
+                document.cookie = "qType=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+                getTable(tab);
+            });
+        } else{ return; }
+    });
     $('.paginate_button').on('click', function(){
         bindRowEvent();
     });
@@ -139,7 +152,7 @@ function checkKey(e){
 }
 
 function bindRowEvent(){
-    $('.edit-btn').addClass('disabled');
+    $('.edit-btn, .delete-btn').addClass('disabled');
     $('div.tab-val').off('dblclick');
     $('div.tab-val').on('dblclick', function(){
         var btn = $('.mass-edit-btn');
@@ -154,12 +167,10 @@ function bindRowEvent(){
         $(this).siblings().focus();
     });
     $('.dataTable tbody>tr').off('click');
-    $('.dataTable tbody>tr').on('click', function(){
+    $('.dataTable tbody>tr').on('click', function(e){
         $('.dataTable tbody>tr.selected').removeClass('selected');
         $(this).addClass('selected');
-        if($('.mass-edit-btn.btn-success').length == 0){
-            $('.edit-btn').removeClass('disabled');
-        }       
+        $('.edit-btn, .delete-btn').removeClass('disabled');
     });
 };
 
@@ -231,6 +242,6 @@ function getTable(tab){
         $('.load-dialog').hide();
         $('.toolbar').addClass('show');
         $('.resp-container table').DataTable({ paging: true });
-        bindEventAll();
+        bindEventAll(tab);
     });
 };

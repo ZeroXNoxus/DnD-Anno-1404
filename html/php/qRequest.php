@@ -5,6 +5,9 @@ if(isset($_COOKIE["qType"])){
     $qType = $_COOKIE["qType"];
 }
 switch ($qType) {
+    case "DELETE":
+        qDelete();
+        break;
     case "INSERT":
         qInsert();
         break;
@@ -14,6 +17,27 @@ switch ($qType) {
     default:
         qSelect();
         break;
+}
+function qDelete(){
+    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $sql = "DELETE FROM ";
+    $keywords = explode("?", $actual_link);
+    $keywords = explode("&", $keywords[1]);
+    $seperator = "";
+    for ($i = 0; $i < count($keywords); $i++) {
+        $seperated = explode("=", $keywords[$i]);
+        if($i == 0){
+            $sql .= $seperated[1];
+            $sql .= ' WHERE ';
+        } else {
+            $sql .= $seperator;
+            $sql .= $seperated[0];
+            $sql .= ' = ';
+            $sql .= "'".$seperated[1]."'";
+            $seperator = ", ";
+        }
+    }
+    fetch_result($sql);
 }
 function qInsert(){
     $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -114,7 +138,7 @@ function fetch_result_duo($query, $query2) {
 
 function handleQuerry($conn, $query){
     $result = $conn->query($query);
-    $json = $result;
+    $json = json_encode($result);
 
     // Encode array to JSON and respond
     $conn -> close();
@@ -131,7 +155,6 @@ function fill_array($conn, $query, $query2){
     $return_arr_head = array('header' => $return_arr);
     // Fetch result of SQL query
     $result = $conn->query($query);
-
     $return_arr = [];
     // Fill array with table data
     while(($row =  mysqli_fetch_assoc($result))){
@@ -139,7 +162,6 @@ function fill_array($conn, $query, $query2){
     }
     $return_arr_data = array('content' => $return_arr);
     $json = json_encode($return_arr_head + $return_arr_data);
-
     // Encode array to JSON and respond
     $conn -> close();
     return $json;
