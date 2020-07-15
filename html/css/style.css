@@ -131,7 +131,7 @@ table input.is_pri{ pointer-events: none; }
 .dataTable tbody>tr:hover{ cursor: pointer; }
 .dataTable tbody>tr.selected { 
   background: rgb(145, 166, 249) !important;
-  outline: inset #2451ff !important;
+  outline: 2px inset #2451ff !important;
  }
  div.dataTables_wrapper div.dataTables_info{ padding-top:0 !important; }
 .dataTable tbody>tr.selected td{ border-color: #91a6f9 !important; }
