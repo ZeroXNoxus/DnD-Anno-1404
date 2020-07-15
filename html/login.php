@@ -54,7 +54,7 @@ if ( isset($_SESSION['loggedIn']) )
                                     
                                 </div>
                                 <div class="d-md-none nav-close-btn"><div class="btn btn-danger"><i class="fas fa-times-circle fa-2x"></i></div></div>
-                                <div class="col-8 col-md-12 toolbar"><button type="button" class="btn btn-primary add_data" data-tab=""><i class="fas fa-plus"></i></button></div>
+                                <div class="col-8 col-md-12 toolbar"><button class="btn btn-primary edit-btn disabled"><i class="fas fa-pen"></i></button><button type="button" class="btn btn-primary insert-btn"><i class="fas fa-plus"></i></button></div>
                                 <div class="col-8 col-md-12 response-area">
                                     <div id="response-container" class="resp-container"></div>
                                 </div>
@@ -62,7 +62,8 @@ if ( isset($_SESSION['loggedIn']) )
                         </div>
                     </div>
                 </div>
-                <div class="popup"><div class="popup-content container-fluid"></div></div>
+                <div id="popup-insert" class="popup"><div class="popup-insert container-fluid"></div></div>
+                <div id="popup-update" class="popup"><div class="popup-update container-fluid"></div></div>
                 <div class="dialog load-dialog" style="display: none;"><div class="loader"></div></div>
             </body>
         </html>';
