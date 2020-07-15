@@ -19,6 +19,7 @@ if ( isset($_SESSION['loggedIn']) )
       '<html>
             <head>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab">
+                <link rel="stylesheet" href="css/font.css">
                 <link rel="stylesheet" href="css/bootstrap.min.css">
                 <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
                 <link rel="stylesheet" href="css/style.css">
@@ -54,7 +55,11 @@ if ( isset($_SESSION['loggedIn']) )
                                     
                                 </div>
                                 <div class="d-md-none nav-close-btn"><div class="btn btn-danger"><i class="fas fa-times-circle fa-2x"></i></div></div>
-                                <div class="col-8 col-md-12 toolbar"><button class="btn btn-primary edit-btn disabled"><i class="fas fa-pen"></i></button><button type="button" class="btn btn-primary insert-btn"><i class="fas fa-plus"></i></button></div>
+                                <div class="col-8 col-md-12 toolbar">
+                                    <button class="btn btn-primary mass-edit-btn"><i class="icon-list-pen"></i></button>
+                                    <button class="btn btn-primary edit-btn disabled"><i class="fas fa-pen"></i></button>
+                                    <button type="button" class="btn btn-primary insert-btn"><i class="fas fa-plus"></i></button>
+                                </div>
                                 <div class="col-8 col-md-12 response-area">
                                     <div id="response-container" class="resp-container"></div>
                                 </div>

@@ -19,6 +19,7 @@
     top: 55px;
     right: -90px;
 }
+.fa-list-pen:before { content: "\e900"; }
 .dataTables_wrapper .row:last-child{     
   position: fixed;
   bottom: 0;

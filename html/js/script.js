@@ -26,8 +26,9 @@ $(document).ready(function(){
 });
 
 function bindEventAll(){
-    $('form').off('submit');
-    $('form').on('submit',function(e){
+    var form = $('form');
+    form.off('submit');
+    form.on('submit',function(e){
         e.stopPropagation();
         e.preventDefault();
         var tab = $(this).data('tab');
@@ -57,7 +58,19 @@ function bindEventAll(){
         });
         
     });
-    $('.resp-container table input').off('change');
+    $('.mass-edit-btn').off('click');
+    $('.mass-edit-btn').on('click', function(){
+        if($(this).hasClass('btn-primary')){
+            $(this).removeClass('btn-primary');
+            $(this).addClass('btn-success');
+        } else if($(this).hasClass('btn-success')){
+            $(this).removeClass('btn-success');
+            $(this).addClass('btn-primary');
+
+        }
+        $('.resp-container table .tab-val').toggleClass('hidden');
+    });
+    $('.resp-container table input:not(.is_pri)').off('change');
     $('.resp-container table input:not(.is_pri)').on('change', function(e){
         console.log(e);
         var tab = e.currentTarget.dataset.tab;
@@ -65,13 +78,14 @@ function bindEventAll(){
         var new_val = $(e.currentTarget).val();
         var index = $(e.currentTarget).parent().parent().find('.is_pri')[0].value;
         var index_name = $(e.currentTarget).parent().parent().find('.is_pri')[0].dataset.name;
+        $(this).siblings().text(new_val);
         document.cookie = "qType=UPDATE; path=/";
         $.ajax({
             url: "php/qRequest.php",
-            data: "table="+tab+"&"+index_name+"="+index+"&"+name+"="+new_val
+            data: "table="+tab+"&"+index_name+"="+index+"&"+name+"="+new_val,
+            context: document.body
         }).done(function(r){
             document.cookie = "qType=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-            getTable(tab);
         })
     });
     $('.insert-btn').off('click');
@@ -91,6 +105,10 @@ function bindEventAll(){
         var selected = $('.dataTable tr.selected input');
         var i = 0;
         while(i<selected.length){ if($(selected[i]).hasClass('is_pri')){ $('span.titleId').text(selected[i].value) } $('.update-form input#'+selected[i].dataset.name).val(selected[i].value); i++; }
+        if($('.mass-edit-btn.btn-success').length != 0){
+            alert("Bitte schalten Sie zuerst den Massen-Bearbeitungs-Modus aus!");
+            return;
+        }
         $('#popup-update').show();
     });
     $('.paginate_button').on('click', function(){
@@ -105,7 +123,9 @@ function bindRowEvent(){
     $('.dataTable tbody>tr').on('click', function(){
         $('.dataTable tbody>tr.selected').removeClass('selected');
         $(this).addClass('selected');
-        $('.edit-btn').removeClass('disabled');
+        if($('.mass-edit-btn.btn-success').length == 0){
+            $('.edit-btn').removeClass('disabled');
+        }       
     });
 };
 
