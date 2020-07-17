@@ -18,8 +18,9 @@ $(document).ready(function(){
         if($(this).hasClass('active')){
             return;
         }
-        $(this).siblings().removeClass('active');
+        $('#navbar .label').removeClass('active');
         $(this).addClass('active');
+        $('.label#'+this.id).addClass('active');
         var tab = this.id;
 
         getTable(tab);
