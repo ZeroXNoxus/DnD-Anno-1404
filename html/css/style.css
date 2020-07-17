@@ -3,7 +3,7 @@ body.login{background-image: url("/img/Twenty_sided_dice.svg");background-repeat
 .dialog>div{width:80vw;padding:15px;height:auto;top:50%;left:50%;background-color:#fff;position:absolute;transform:translate(-50%,-50%);border-radius:15px;-webkit-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);-moz-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75)}
 .dialog.load-dialog{position:fixed;background:rgba(0,0,0,0.6)}
 .dialog.load-dialog>div{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
-#navbar{color:#b3101d;background-color:#fff;position:fixed;font-size:16px;z-index:3;left:0;width:0;height:100vh;opacity:0;-webkit-box-shadow:0 2px 4px darkgrey;-moz-box-shadow:0 2px 4px darkgrey;box-shadow:0 2px 4px darkgrey;-webkit-transition:all .5s ease;transition:all .5s ease;pointer-events:none}
+#navbar{text-align:center;color:#b3101d;background-color:#fff;position:fixed;font-size:16px;z-index:3;left:0;width:0;height:100vh;opacity:0;-webkit-box-shadow:0 2px 4px darkgrey;-moz-box-shadow:0 2px 4px darkgrey;box-shadow:0 2px 4px darkgrey;-webkit-transition:all .5s ease;transition:all .5s ease;pointer-events:none}
 #navbar.show{width:33.3%;opacity:1;pointer-events:all}
 #navbar.show ~ div{margin-left:33.3%;width:66.7%}
 #navbar .img-container {min-height: 35px;background-repeat: no-repeat;background-position: center;background-image: url(/img/dnd-logo.svg);width: 8.333333%;height: auto}
@@ -58,6 +58,7 @@ table input.is_pri{pointer-events:none}
 .text-md-nowrap{white-space:nowrap}
 .response-area{margin-left:auto!important;margin-right:auto;max-width:1920px;min-height:90vh}
 .resp-container{max-height:82vh;min-height:84vh;margin-top:4vh}
+#navbar .img-container{min-height:auto}
 }
 @media (min-height: 569px) {
 .resp-container{max-height:70vh;min-height:70vh;margin-top:11vh}

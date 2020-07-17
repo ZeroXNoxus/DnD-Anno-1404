@@ -4,9 +4,7 @@ $password = $_POST["pass"];
 $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
 
 if (isset($user) 
-    and isset($password)
-    and $user == 'DnD'
-    and $password == 'TiamatIsALittleBitch')
+    and isset($password))
 {
     $_SESSION['loggedIn'] = date("H:i:s");
 }
@@ -46,7 +44,7 @@ if ( isset($_SESSION['loggedIn']) )
                                         <div class="col-12 label" id="people">people</div>
                                         <div class="col-12 label" id="companies">companies</div>
                                         <div class="col-12 label" id="resources">resources</div>
-                                        <div class="col-12 mt-auto link"><a data-ajax="false" href="index.html?aktion=logout">logout</a></div> 
+                                        <div class="col-12 mt-auto link"><a data-ajax="false" href="index.html?aktion=logout">Logout <i class="fas fa-sign-out-alt"></i></a></div> 
                                     </div>
                                     <div class="row desktop d-none d-md-flex">
                                         <div class="col-12">
@@ -56,13 +54,13 @@ if ( isset($_SESSION['loggedIn']) )
                                                 <div class="col-2 col-lg-1 label" id="people">people</div>
                                                 <div class="col-2 col-lg-1 label" id="companies">companies</div>
                                                 <div class="col-2 col-lg-1 label" id="resources">resources</div>
-                                                <div class="col-2 col-lg-1 label" id="resources">resources</div>
-                                                <div class="col-2 col-lg-1 label" id="resources">resources</div>
-                                                <div class="col-2 col-lg-1 label" id="resources">resources</div>
-                                                <div class="col-2 col-lg-1 label" id="resources">resources</div>
-                                                <div class="col-2 col-lg-1 label" id="resources">resources</div>
-                                                <div class="col-2 col-lg-1 label" id="resources">resources</div>
-                                                <div class="col-2 col-lg-1 ml-auto"><a data-ajax="false" href="index.html?aktion=logout">logout</a></div>
+                                                <div class="col-2 col-lg-1 label" id="a">a</div>
+                                                <div class="col-2 col-lg-1 label" id="b">b</div>
+                                                <div class="col-2 col-lg-1 label" id="c">c</div>
+                                                <div class="col-2 col-lg-1 label" id="d">d</div>
+                                                <div class="col-2 col-lg-1 label" id="e">e</div>
+                                                <div class="col-2 col-lg-1 label" id="f">f</div>
+                                                <div class="col-2 col-lg-1 ml-auto"><a data-ajax="false" href="index.html?aktion=logout">Logout <i class="fas fa-sign-out-alt"></i></a></div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-2 col-lg-1"></div>
