@@ -100,9 +100,19 @@ function qSelect(){
     fetch_result_duo($sql, $sql_prikey);
 }
 
-
-
-/* $where = explode(",", $_GET["where"]); */
+function getConnection(){
+    $servername = "localhost";
+    $db = "dnd 5e anno 1404";
+    $username = $_COOKIE["Username"];
+    $password = $_COOKIE["Password"];
+    try {
+        $conn = new PDO('mysql:host='.$servername.';dbname='.$db.';charset=utf8mb4', $username, $password);
+    } catch(PDOException $e){
+        echo 'Connection failed: ' . $e->getMessage();
+        exit;
+    }
+    return $conn;
+}
 
 
 function fetch_result($query) {    
@@ -111,7 +121,8 @@ function fetch_result($query) {
     $username = $_COOKIE["Username"];
     $password = $_COOKIE["Password"];
     // Create connection
-    $conn = new mysqli($servername, $username, $password, $db);
+    $conn = getConnection();
+    //$conn = new mysqli($servername, $username, $password, $db);
 
     // Check connection
     if ($conn->connect_error) {
@@ -120,50 +131,59 @@ function fetch_result($query) {
     $json = handleQuerry($conn, $query);
     echo $json;
 }
+
+
 function fetch_result_duo($query, $query2) {    
     $servername = "localhost";
     $db = "dnd 5e anno 1404";
     $username = $_COOKIE["Username"];
     $password = $_COOKIE["Password"];
     // Create connection
-    $conn = new mysqli($servername, $username, $password, $db);
+    $conn = getConnection();
+    //$conn = new mysqli($servername, $username, $password, $db);
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
     $json = fill_array($conn, $query, $query2);
-    echo $json;
+    $conn=null;
+    return $json;
 }
 
 function handleQuerry($conn, $query){
-    $result = $conn->query($query);
+    $result = $conn->prepare($query);
+    $result->execute();
     $json = json_encode($result);
 
+    $conn=null;
     // Encode array to JSON and respond
-    $conn -> close();
-    return $json;
+    echo $json;
 }
+
 function fill_array($conn, $query, $query2){
+    $return_arr = [];
     if($query2){
-        $result = $conn->query($query2);
+        $result = $conn->prepare($query2);
+        $result->execute();
     }
-    $return_arr = [];
-    while(($row =  mysqli_fetch_assoc($result))){
+    $return_arr = $result->fetchAll(PDO::FETCH_ASSOC);
+    $result = null;
+/*     while(($row =  mysqli_fetch_assoc($result))){
         array_push($return_arr,$row);
-    }
+    } */
     $return_arr_head = array('header' => $return_arr);
-    // Fetch result of SQL query
-    $result = $conn->query($query);
     $return_arr = [];
+    // Fetch result of SQL query
+    $result = $conn->prepare($query);
+    $result->execute();
+    $return_arr = $result->fetchAll(PDO::FETCH_ASSOC);
+    $result = null;
     // Fill array with table data
-    while(($row =  mysqli_fetch_assoc($result))){
+    /* while(($row =  mysqli_fetch_assoc($result))){
         array_push($return_arr,$row);
-    }
+    } */
     $return_arr_data = array('content' => $return_arr);
     $json = json_encode($return_arr_head + $return_arr_data);
+
+    $conn=null;
     // Encode array to JSON and respond
-    $conn -> close();
-    return $json;
+    echo $json;
 }
 ?>

@@ -178,4 +178,7 @@ table input.is_pri{ pointer-events: none; }
   #navbar .row>div:first-child{ border-left: 1px solid darkgrey; }
   #navbar .row>div:last-child{ border-right: 1px solid darkgrey; }
 }
+@media (min-height: 768px){
+  .response-area{ min-height: 90vh; }
+}
 /** BREAKPOINT: md | END **/
