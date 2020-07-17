@@ -1,3 +1,4 @@
+body.login{background-image: url("/img/Twenty_sided_dice.svg")}
 #navbar{color:#b3101d;background-color:#fff;position:fixed;font-size:16px;z-index:3;left:0;width:0;height:100vh;opacity:0;-webkit-box-shadow:0 2px 4px darkgrey;-moz-box-shadow:0 2px 4px darkgrey;box-shadow:0 2px 4px darkgrey;-webkit-transition:all .5s ease;transition:all .5s ease;pointer-events:none}
 #navbar.show{width:33.3%;opacity:1;pointer-events:all}
 #navbar.show ~ div{margin-left:33.3%;width:66.7%}
@@ -11,7 +12,7 @@
 .dataTables_wrapper .row:last-child{position:fixed;bottom:0;width:100%;margin-left:-15px;margin-right:-15px}
 .dataTables_wrapper .dataTables_info{padding-top:0!important}
 .dialog{z-index:10;top:0;width:100%;height:100%}
-.dialog>div{width:600px;padding:15px;height:auto;top:50%;left:50%;position:absolute;transform:translate(-50%,-50%);border-radius:15px;-webkit-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);-moz-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75)}
+.dialog>div{width:80vw;padding:15px;height:auto;top:50%;left:50%;position:absolute;transform:translate(-50%,-50%);border-radius:15px;-webkit-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);-moz-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75)}
 .dialog.load-dialog{position:fixed;background:rgba(0,0,0,0.6)}
 .dialog.load-dialog>div{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
 .fa-list-pen:before{content:"\e900"}
@@ -31,6 +32,7 @@
 .popup form .footer{position:fixed;bottom:15px;z-index:1}
 .popup form .form-group{max-height:80vh;overflow-y:auto}
 .popup form .form-group .row{margin-top:45px;margin-bottom:30px}
+.label.active {background: #b3101d;color: #fff}
 .login-form>ul{list-style:none}
 table .tab-val{border:none;background-color:transparent;width:100%;padding:.75rem;padding-right:.25rem;padding-left:.25rem}
 table input.is_pri{pointer-events:none}
