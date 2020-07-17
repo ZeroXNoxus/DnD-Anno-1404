@@ -41,6 +41,7 @@ if ( isset($_SESSION['loggedIn']) )
                             <div class="row justify-content-end h-100">
                                 <div id="navbar" class="col-4 col-md-12 no-select no-break bold show">
                                     <div class="row mobile d-flex d-md-none">
+                                        <div class="col-12 img-container"></div>
                                         <div class="col-12 label" id="spieler" data-where="" data-row="" data-value="">Player</div>
                                         <div class="col-12 label" id="people">people</div>
                                         <div class="col-12 label" id="companies">companies</div>
@@ -48,11 +49,25 @@ if ( isset($_SESSION['loggedIn']) )
                                         <div class="col-12 mt-auto link"><a data-ajax="false" href="index.html?aktion=logout">logout</a></div> 
                                     </div>
                                     <div class="row desktop d-none d-md-flex">
-                                        <div class="col-2 col-lg-1 label" id="spieler" data-where="" data-row="" data-value="">Player</div>
-                                        <div class="col-2 col-lg-1 label" id="people">people</div>
-                                        <div class="col-2 col-lg-1 label" id="companies">companies</div>
-                                        <div class="col-2 col-lg-1 label" id="resources">resources</div>
-                                        <div class="col-2 col-lg-1 ml-auto"><a data-ajax="false" href="index.html?aktion=logout">logout</a></div> 
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-2 col-lg-1 img-container"></div>
+                                                <div class="col-2 col-lg-1 label" id="spieler" data-where="" data-row="" data-value="">Player</div>
+                                                <div class="col-2 col-lg-1 label" id="people">people</div>
+                                                <div class="col-2 col-lg-1 label" id="companies">companies</div>
+                                                <div class="col-2 col-lg-1 label" id="resources">resources</div>
+                                                <div class="col-2 col-lg-1 label" id="resources">resources</div>
+                                                <div class="col-2 col-lg-1 label" id="resources">resources</div>
+                                                <div class="col-2 col-lg-1 label" id="resources">resources</div>
+                                                <div class="col-2 col-lg-1 label" id="resources">resources</div>
+                                                <div class="col-2 col-lg-1 label" id="resources">resources</div>
+                                                <div class="col-2 col-lg-1 label" id="resources">resources</div>
+                                                <div class="col-2 col-lg-1 ml-auto"><a data-ajax="false" href="index.html?aktion=logout">logout</a></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-2 col-lg-1"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                     
                                 </div>

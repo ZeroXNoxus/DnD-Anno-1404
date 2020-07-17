@@ -1,7 +1,15 @@
-body.login{background-image: url("/img/Twenty_sided_dice.svg")}
+body.login{background-image: url("/img/Twenty_sided_dice.svg");background-repeat: no-repeat;background-position: center;background-size: contain}
+.dialog{z-index:10;top:0;width:100%;height:100%}
+.dialog>div{width:80vw;padding:15px;height:auto;top:50%;left:50%;background-color:#fff;position:absolute;transform:translate(-50%,-50%);border-radius:15px;-webkit-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);-moz-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75)}
+.dialog.load-dialog{position:fixed;background:rgba(0,0,0,0.6)}
+.dialog.load-dialog>div{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
 #navbar{color:#b3101d;background-color:#fff;position:fixed;font-size:16px;z-index:3;left:0;width:0;height:100vh;opacity:0;-webkit-box-shadow:0 2px 4px darkgrey;-moz-box-shadow:0 2px 4px darkgrey;box-shadow:0 2px 4px darkgrey;-webkit-transition:all .5s ease;transition:all .5s ease;pointer-events:none}
 #navbar.show{width:33.3%;opacity:1;pointer-events:all}
 #navbar.show ~ div{margin-left:33.3%;width:66.7%}
+#navbar .img-container {min-height: 35px;background-repeat: no-repeat;background-position: center;background-image: url(/img/dnd-logo.svg);width: 8.333333%;height: auto}
+#navbar .label {transition: all 0.2s ease;cursor:pointer}
+#navbar .label:hover {color:#fff;-webkit-box-shadow: inset 0 0px 20px 1.2rem #b3101d;-moz-box-shadow: inset 0 0px 20px 1.2rem #b3101d;box-shadow: inset 0 0px 20px 1.2rem #b3101d}
+#navbar .label.active {color:#fff;-webkit-box-shadow: inset 0 0px 20px 1.2rem #b3101d;-moz-box-shadow: inset 0 0px 20px 1.2rem #b3101d;box-shadow: inset 0 0px 20px 1.2rem #b3101d}
 .toolbar{display:none;margin-left:0!important;max-width:100%;margin-top:15px;width:100%;flex:none;text-align:right;position:fixed;pointer-events:none;white-space:nowrap}
 .toolbar.show{display:block}
 .toolbar button{margin-right:15px}
@@ -11,10 +19,6 @@ body.login{background-image: url("/img/Twenty_sided_dice.svg")}
 .dataTables_wrapper .row:first-child{position:fixed;top:55px;right:-90px}
 .dataTables_wrapper .row:last-child{position:fixed;bottom:0;width:100%;margin-left:-15px;margin-right:-15px}
 .dataTables_wrapper .dataTables_info{padding-top:0!important}
-.dialog{z-index:10;top:0;width:100%;height:100%}
-.dialog>div{width:80vw;padding:15px;height:auto;top:50%;left:50%;position:absolute;transform:translate(-50%,-50%);border-radius:15px;-webkit-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);-moz-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75)}
-.dialog.load-dialog{position:fixed;background:rgba(0,0,0,0.6)}
-.dialog.load-dialog>div{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
 .fa-list-pen:before{content:"\e900"}
 .resp-container{max-height:64vh;min-height:64vh;overflow-y:auto;margin-top:15vh}
 .btn{user-select:none}
@@ -32,7 +36,6 @@ body.login{background-image: url("/img/Twenty_sided_dice.svg")}
 .popup form .footer{position:fixed;bottom:15px;z-index:1}
 .popup form .form-group{max-height:80vh;overflow-y:auto}
 .popup form .form-group .row{margin-top:45px;margin-bottom:30px}
-.label.active {background: #b3101d;color: #fff}
 .login-form>ul{list-style:none}
 table .tab-val{border:none;background-color:transparent;width:100%;padding:.75rem;padding-right:.25rem;padding-left:.25rem}
 table input.is_pri{pointer-events:none}

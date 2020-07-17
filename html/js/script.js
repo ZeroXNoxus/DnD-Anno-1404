@@ -189,43 +189,47 @@ function getTable(tab){
         var form = "<div class='row'><div class='col-12'><form class='popup-form' data-tab='"+tab+"' method='post'><div class='form-group col-12'><h4 class='header'>Datensatz anlegen für Tabelle '"+tab+"'</h4><div class='row'>";
         var alt_text = tab+" mit ID '<span class='titleId'></span>' bearbeiten";
         var i = 0;
-        while(i<response.content.length){
-            var obj = response.content[i];
-            if(i===0){
-                table += "<thead>";
-                for(x in obj){
-                    table += "<th>";
-                    table += x;
-                    table += "</th>";
-                }
-                table += "</thead>";
-                table += "<tbody>";
-            }
-            table += "<tr>";
-            for(x in obj){
-                var value = response.content[i][x];
-                var is_pri = false;
-                if(response.header[0]){ if(response.header[0].Column_name == x){ is_pri = true; } }
-                if(i == 0){
-                    if(is_pri){
-                        form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control is_pri disabled' id='"+x+"'></div>";
-                    } else{
-                        form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control' id='"+x+"'></div>";
+        if(response.content.length){
+            while(i<response.content.length){
+                var obj = response.content[i];
+                if(i===0){
+                    table += "<thead>";
+                    for(x in obj){
+                        table += "<th>";
+                        table += x;
+                        table += "</th>";
                     }
+                    table += "</thead>";
+                    table += "<tbody>";
                 }
-                table += "<td>";
-                if(is_pri){
-                    table += "<div class='tab-val' data-title='"+x+": "+value+"' title='"+x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val is_pri' data-tab='"+tab+"' data-name='"+x+"' data-title='"+x+": "+value+"' title='"+x+": "+value+"' value='"+value+"' />";
-                } else{ 
-                    table += "<div class='tab-val' data-title='"+x+": "+value+"' title='"+x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val' data-tab='"+tab+"' data-name='"+x+"' data-title='"+x+": "+value+"' title='"+x+": "+value+"' value='"+value+"' />";
+                table += "<tr>";
+                for(x in obj){
+                    var value = obj[x];
+                    var is_pri = false;
+                    if(response.header[0]){ if(response.header[0].Column_name == x){ is_pri = true; } }
+                    if(i == 0){
+                        if(is_pri){
+                            form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control is_pri disabled' id='"+x+"'></div>";
+                        } else{
+                            form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control' id='"+x+"'></div>";
+                        }
+                    }
+                    table += "<td>";
+                    if(is_pri){
+                        table += "<div class='tab-val' data-title='"+x+": "+value+"' title='"+x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val is_pri' data-tab='"+tab+"' data-name='"+x+"' data-title='"+x+": "+value+"' title='"+x+": "+value+"' value='"+value+"' />";
+                    } else{ 
+                        table += "<div class='tab-val' data-title='"+x+": "+value+"' title='"+x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val' data-tab='"+tab+"' data-name='"+x+"' data-title='"+x+": "+value+"' title='"+x+": "+value+"' value='"+value+"' />";
+                    }
+                    table += "</td>";
                 }
-                table += "</td>";
+                table += "</tr>";
+                i++;
             }
-            table += "</tr>";
-            i++;
+            form += "</div><div class='footer'><button type='submit' class='btn btn-primary'>Submit</button></div></div></form></div></div>";
+            table += "</tbody></table>";
+        } else{
+            table = "<h4 class='text-danger'>Es wurden keine Daten f&uuml;r die Tabelle: '"+tab+"' gefunden!</h4>";
         }
-        form += "</div><div class='footer'><button type='submit' class='btn btn-primary'>Submit</button></div></div></form></div></div>";
-        table += "</tbody></table>";
         $('.resp-container').append(table);
         $('.popup-insert').empty();
         $('.popup-insert').append(form);
