@@ -27,7 +27,7 @@
   margin-left: -15px;
   margin-right: -15px;
 }
-.resp-container{ max-height: 78vh; overflow-Y: auto; margin-top:80px; }
+.resp-container{ max-height: 64vh; min-height: 64vh; overflow-Y: auto; margin-top:15vh; }
 #navbar.show{ width: 33.3%; opacity: 1; pointer-events: all; }
 #navbar.show ~ div {
   margin-left: 33.3%;
@@ -45,6 +45,7 @@
     text-align: right;
     position: fixed;
     pointer-events: none;
+    white-space: nowrap;
  }
 .toolbar.show{ display: block; }
 .toolbar button{ margin-right: 15px; }
@@ -52,7 +53,7 @@
 .response-area{ 
     background: #fff;
     width: 100%;
-    min-height: 88vh;
+    max-height: 65vh;
     -webkit-transition: all 0.5s ease;
             transition: all 0.5s ease;
     flex: none;
@@ -171,14 +172,50 @@ table input.is_pri{ pointer-events: none; }
     max-width: 1920px;
     min-height: 90vh;
   }
-  .resp-container{ max-height: 84vh; min-height: 84vh; margin-top: 25px; }
+  .resp-container{ max-height: 82vh; min-height: 84vh; margin-top: 4vh; }
   #navbar.show{ width: 100%; }
   #navbar.show ~ div { width: 100%; }
   #navbar .row{ border: 0; }
   #navbar .row>div:first-child{ border-left: 1px solid darkgrey; }
   #navbar .row>div:last-child{ border-right: 1px solid darkgrey; }
 }
-@media (min-height: 768px){
-  .response-area{ min-height: 90vh; }
+@media (min-height: 569px){
+  .resp-container{ 
+    max-height: 70vh;
+    min-height: 70vh;
+    margin-top: 11vh;
+   }
 }
+@media (min-height: 668px){
+  .resp-container{ 
+    max-height: 74vh;
+    min-height: 74vh;
+    margin-top: 10vh;
+  }
+}
+@media (min-height: 737px){
+  .resp-container{ 
+    max-height: 77vh;
+    min-height: 77vh;
+    margin-top: 9vh;
+  }
+}
+@media (min-height: 813px){
+  .resp-container{ 
+    max-height: 84vh;
+    min-height: 84vh;
+    margin-top: 3vh;
+  }
+}
+@media (min-height: 1025px){
+  .resp-container{ 
+    max-height: 88vh;
+    min-height: 88vh;
+    margin-top: 2vh;
+  }
+}
+
+
+
+
 /** BREAKPOINT: md | END **/
