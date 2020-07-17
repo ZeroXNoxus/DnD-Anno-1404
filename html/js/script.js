@@ -206,8 +206,15 @@ function getTable(tab){
                 for(x in obj){
                     var value = obj[x];
                     var is_pri = false;
+                    var is_sec = false;
                     if(response.header[0]){ if(response.header[0].Column_name == x){ is_pri = true; } }
+                    if(response.header[0]){ if(response.header[0].Column_name == x){ is_sec = true; } }
                     if(i == 0){
+                        if(is_sec){
+                            form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control is_sec' id='"+x+"'></div>";
+                        } else{
+                            form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control' id='"+x+"'></div>";
+                        }
                         if(is_pri){
                             form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control is_pri disabled' id='"+x+"'></div>";
                         } else{

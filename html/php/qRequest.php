@@ -97,7 +97,7 @@ function qUpdate(){
 function qSelect(){
     $sql = "SELECT * FROM ".$_GET["table"];
     $sql_prikey = "SHOW KEYS FROM ".$_GET["table"]." WHERE Key_name = 'PRIMARY'";
-    fetch_result_duo($sql, $sql_prikey);
+    fetch_results($sql, $sql_prikey);
 }
 
 function getConnection(){
@@ -132,8 +132,7 @@ function fetch_result($query) {
     echo $json;
 }
 
-
-function fetch_result_duo($query, $query2) {    
+function fetch_results($query, $query2) {    
     $servername = "localhost";
     $db = "dnd 5e anno 1404";
     $username = $_COOKIE["Username"];
