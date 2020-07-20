@@ -207,16 +207,19 @@ function getTable(tab){
                     var value = obj[x];
                     var is_pri = false;
                     var is_sec = false;
-                    if(response.header[0]){ if(response.header[0].Column_name == x){ is_pri = true; } }
-                    if(response.header[0]){ if(response.header[0].Column_name == x){ is_sec = true; } }
-                    if(i == 0){
-                        if(is_sec){
-                            form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control is_sec' id='"+x+"'></div>";
-                        } else{
-                            form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control' id='"+x+"'></div>";
+                    if(response.primary){ if(response.primary[0].Column_name == x){ is_pri = true; } }
+                    if(response.secondary){ 
+                        count = 0;
+                        while(count<response.secondary.length){
+                            if(response.secondary[count].Column_name == x){ is_sec = true; count = response.secondary.length;} 
+                            count++;
                         }
+                    }
+                    if(i == 0){
                         if(is_pri){
                             form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control is_pri disabled' id='"+x+"'></div>";
+                        } else if(is_sec){
+                            form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control is_sec' id='"+x+"'></div>";
                         } else{
                             form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control' id='"+x+"'></div>";
                         }
@@ -224,7 +227,9 @@ function getTable(tab){
                     table += "<td>";
                     if(is_pri){
                         table += "<div class='tab-val' data-title='"+x+": "+value+"' title='"+x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val is_pri' data-tab='"+tab+"' data-name='"+x+"' data-title='"+x+": "+value+"' title='"+x+": "+value+"' value='"+value+"' />";
-                    } else{ 
+                    } else if(is_sec){
+                        table += "<div class='tab-val' data-title='"+x+": "+value+"' title='"+x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val is_sec' data-tab='"+tab+"' data-name='"+x+"' data-title='"+x+": "+value+"' title='"+x+": "+value+"' value='"+value+"' />";
+                    }else{ 
                         table += "<div class='tab-val' data-title='"+x+": "+value+"' title='"+x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val' data-tab='"+tab+"' data-name='"+x+"' data-title='"+x+": "+value+"' title='"+x+": "+value+"' value='"+value+"' />";
                     }
                     table += "</td>";

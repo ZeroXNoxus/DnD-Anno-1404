@@ -97,7 +97,8 @@ function qUpdate(){
 function qSelect(){
     $sql = "SELECT * FROM ".$_GET["table"];
     $sql_prikey = "SHOW KEYS FROM ".$_GET["table"]." WHERE Key_name = 'PRIMARY'";
-    fetch_results($sql, $sql_prikey);
+    $sql_seckey = "SHOW KEYS FROM ".$_GET["table"]." WHERE Key_name REGEXP '_idx'";
+    fetch_results($sql, $sql_prikey, $sql_seckey);
 }
 
 function getConnection(){
@@ -116,13 +117,8 @@ function getConnection(){
 
 
 function fetch_result($query) {    
-    $servername = "localhost";
-    $db = "dnd 5e anno 1404";
-    $username = $_COOKIE["Username"];
-    $password = $_COOKIE["Password"];
     // Create connection
     $conn = getConnection();
-    //$conn = new mysqli($servername, $username, $password, $db);
 
     // Check connection
     if ($conn->connect_error) {
@@ -132,16 +128,11 @@ function fetch_result($query) {
     echo $json;
 }
 
-function fetch_results($query, $query2) {    
-    $servername = "localhost";
-    $db = "dnd 5e anno 1404";
-    $username = $_COOKIE["Username"];
-    $password = $_COOKIE["Password"];
+function fetch_results($query, $query2, $query3) {    
     // Create connection
     $conn = getConnection();
-    //$conn = new mysqli($servername, $username, $password, $db);
 
-    $json = fill_array($conn, $query, $query2);
+    $json = fill_array($conn, $query, $query2, $query3);
     $conn=null;
     return $json;
 }
@@ -156,7 +147,7 @@ function handleQuerry($conn, $query){
     echo $json;
 }
 
-function fill_array($conn, $query, $query2){
+function fill_array($conn, $query, $query2, $query3){
     $return_arr = [];
     if($query2){
         $result = $conn->prepare($query2);
@@ -164,10 +155,19 @@ function fill_array($conn, $query, $query2){
     }
     $return_arr = $result->fetchAll(PDO::FETCH_ASSOC);
     $result = null;
-/*     while(($row =  mysqli_fetch_assoc($result))){
-        array_push($return_arr,$row);
-    } */
-    $return_arr_head = array('header' => $return_arr);
+
+    $return_arr_pri = array('primary' => $return_arr);
+
+    $return_arr = [];
+    if($query3){
+        $result = $conn->prepare($query3);
+        $result->execute();
+    }
+    $return_arr = $result->fetchAll(PDO::FETCH_ASSOC);
+    $result = null;
+
+    $return_arr_sec = array('secondary' => $return_arr);
+
     $return_arr = [];
     // Fetch result of SQL query
     $result = $conn->prepare($query);
@@ -175,11 +175,8 @@ function fill_array($conn, $query, $query2){
     $return_arr = $result->fetchAll(PDO::FETCH_ASSOC);
     $result = null;
     // Fill array with table data
-    /* while(($row =  mysqli_fetch_assoc($result))){
-        array_push($return_arr,$row);
-    } */
     $return_arr_data = array('content' => $return_arr);
-    $json = json_encode($return_arr_head + $return_arr_data);
+    $json = json_encode($return_arr_pri + $return_arr_sec + $return_arr_data);
 
     $conn=null;
     // Encode array to JSON and respond
