@@ -46,10 +46,10 @@ table input.is_pri{pointer-events:none}
 #navbar.show+.response-area{width:66.7%;margin-left:33.3%}
 .response-area{max-width:100%}
 }
-.md-hide{display:default}
 .md-show{display:none}
+.md-hide{display:inline}
 @media (min-width: 768px) {
-.md-show{display:default}
+.md-show{display:inline}
 .md-hide{display:none}
 #navbar{color:#b3101d;background-color:#fff;font-size:inherit;position:inherit;height:auto;width:100%;opacity:1;pointer-events:all}
 #navbar.show{width:100%}
