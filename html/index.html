@@ -24,8 +24,15 @@
                         <label for="password">Passwort</label>
                         <input id="password" class="form-control" name="password" type="password" placeholder="Passwort" minlength="8" maxlength="24" required>
                     </div>
-                    <button class="btn btn-success">Login</button>
-                    <button class="btn btn-primary switch_form">Registrieren</button>
+                    <div class="row">
+                        <div class="col-4 col-md-6">
+                            <button class="btn btn-success">Login</button>
+                        </div>
+                        <div class="col-8 col-md-6 ta-right">
+                            <button class="btn btn-primary switch_form md-show">Zur Registrierung</button>
+                            <button class="btn btn-primary switch_form md-hide">Registrierung</button>
+                        </div>
+                    </div>
                 </form>
                 <form class="register-form hidden" action="login.php" method="post">
                     <input id="form-type" name="form-type" type="hidden" value="register">
@@ -45,14 +52,21 @@
                         <label for="re_pass">Passwort wiederholen</label>
                         <input id="re_pass" class="form-control" name="re_pass" type="password" placeholder="Passwort wiederholen" minlength="8" maxlength="24" required>
                     </div>
-                    <button class="btn btn-success">Registrieren</button>
-                    <button class="btn btn-primary switch_form">Zur&uuml;ck zum Login</button>
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-success md-show">Benutzer registrieren</button>
+                            <button class="btn btn-success md-hide">Registrieren</button>
+                        </div>
+                        <div class="col-6 ta-right">
+                            <button class="btn btn-primary switch_form md-show">Zur&uuml;ck zum Login</button>
+                            <button class="btn btn-primary switch_form md-hide">Login</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
     </body>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
             var elements = document.getElementsByTagName("INPUT");
             for (var i = 0; i < elements.length; i++) {
                 elements[i].oninvalid = function(e) {
@@ -81,6 +95,5 @@
                 e.preventDefault();
                 $('form').toggleClass('hidden');
             });
-        });
     </script>
 </html>

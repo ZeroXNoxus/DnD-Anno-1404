@@ -15,6 +15,7 @@ body.login{background-image: url("/img/Twenty_sided_dice.svg");background-repeat
 .toolbar button{margin-right:15px}
 .toolbar button:last-child{margin-right:0}
 .hidden{display:none!important}
+.ta-right{text-align:right}
 .dataTables_wrapper *{margin:0;text-overflow:ellipsis}
 .dataTables_wrapper .row:first-child{position:fixed;top:55px;right:-90px}
 .dataTables_wrapper .row:last-child{position:fixed;bottom:0;width:100%;margin-left:-15px;margin-right:-15px}
@@ -45,7 +46,11 @@ table input.is_pri{pointer-events:none}
 #navbar.show+.response-area{width:66.7%;margin-left:33.3%}
 .response-area{max-width:100%}
 }
+.md-hide{display:default}
+.md-show{display:none}
 @media (min-width: 768px) {
+.md-show{display:default}
+.md-hide{display:none}
 #navbar{color:#b3101d;background-color:#fff;font-size:inherit;position:inherit;height:auto;width:100%;opacity:1;pointer-events:all}
 #navbar.show{width:100%}
 #navbar.show ~ div{width:100%}
