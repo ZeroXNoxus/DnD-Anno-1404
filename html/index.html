@@ -1,5 +1,3 @@
-<!-- SERVER PW: TiamatIsALittleBitch -->
-
 <html lang="de" dir="ltr">
     <head>
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
@@ -15,6 +13,7 @@
         <div class="dialog">
             <div>
                 <form class="login-form" action="login.php" method="post">
+                    <h4>Login</h4>
                     <input id="form-type" name="form-type" type="hidden" value="login">
                     <div class="form-group">
                         <label for="login">Benutzer</label>
@@ -35,6 +34,7 @@
                     </div>
                 </form>
                 <form class="register-form hidden" action="login.php" method="post">
+                    <h4>Registrierung</h4>
                     <input id="form-type" name="form-type" type="hidden" value="register">
                     <div class="form-group">
                         <label for="user">Benutzer</label>
@@ -46,8 +46,8 @@
                     </div>
                     <div class="form-group">
                         <label for="password_reg">Passwort</label>
-                        <input id="password_reg" class="form-control" name="password_reg" type="password" placeholder="Passwort" minlength="8" maxlength="24" required>
-                        <input id="re_pass" class="form-control" name="re_pass" type="password" placeholder="Passwort wiederholen" minlength="8" maxlength="24" required>
+                        <input id="password_reg" class="form-control" name="password_reg" type="password" placeholder="Passwort" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Es muss mindestens ein Gro&szlig;- und Kleinbuchstabe angegeben werden. Au&szlig;erdem muss das Passwort mindestens 8 Zeichen lang sein" required>
+                        <input id="re_pass" class="form-control" name="re_pass" type="password" placeholder="Passwort wiederholen" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Es muss mindestens ein Gro&szlig;- und Kleinbuchstabe angegeben werden. Au&szlig;erdem muss das Passwort mindestens 8 Zeichen lang sein" required>
                     </div>
                     <div class="row">
                         <div class="col-6">
