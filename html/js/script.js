@@ -79,11 +79,21 @@ function bindEventAll(tab){
     });
     $('.resp-container table input:not(.is_pri)').off('change');
     $('.resp-container table input:not(.is_pri)').on('change', function(e){
-        var tab = e.currentTarget.dataset.tab;
-        var name = e.currentTarget.dataset.name;
-        var new_val = $(e.currentTarget).val();
-        var index = $(e.currentTarget).parent().parent().find('.is_pri')[0].value;
-        var index_name = $(e.currentTarget).parent().parent().find('.is_pri')[0].dataset.name;
+        var target = e.currentTarget;
+        var tab = target.dataset.tab;
+        var name = target.dataset.name;
+        var new_val = $(target).val();
+        var selection = $(target).parent().parent().find('.is_pri');
+        var index, index_name;
+        if(selection.length){
+            index = selection.val();
+            index_name = selection.data('name');
+        } else {
+            selection = $(target).parent().siblings().first().find('input');
+            index = selection.val();
+            index_name = selection.data('name');
+        }
+
         $(this).siblings().text(new_val);
         document.cookie = "qType=UPDATE; path=/";
         $.ajax({
