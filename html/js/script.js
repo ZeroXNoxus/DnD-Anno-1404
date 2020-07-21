@@ -13,14 +13,18 @@ $(document).ready(function(){
         $('#navbar').toggleClass('show');
         
     });
-
-    $(".label").on("click", function(){
+    $(".label:not(.btn-label)").off("click");
+    $(".label:not(.btn-label)").on("click", function(){
         if($(this).hasClass('active')){
             return;
         }
         $('#navbar .label').removeClass('active');
         $(this).addClass('active');
         $('.label#'+this.id).addClass('active');
+        if($(this).hasClass('dropdown-item')){
+            var target = $(this).parent('.dropdown-menu')[0].getAttribute("aria-labelledby");
+            $('#'+target).addClass('active');
+        }
         var tab = this.id;
 
         getTable(tab);
@@ -180,8 +184,10 @@ function getTable(tab){
     $('.popup-content').empty();
     $('.toolbar').removeClass('show');
     $('.load-dialog').show();
+    var link = '';
+    link = "php/qRequest.php?table="+tab+"&where";
     $.ajax({
-        url: "php/qRequest.php?table="+tab+"&where",
+        url: link,
         context: document.body,
     }).done(function(r) {
         var response = JSON.parse(r);
@@ -207,8 +213,8 @@ function getTable(tab){
                     var value = obj[x];
                     var is_pri = false;
                     var is_sec = false;
-                    if(response.primary){ if(response.primary[0].Column_name == x){ is_pri = true; } }
-                    if(response.secondary){ 
+                    if(response.primary.length){ if(response.primary[0].Column_name == x){ is_pri = true; } }
+                    if(response.secondary.length){ 
                         count = 0;
                         while(count<response.secondary.length){
                             if(response.secondary[count].Column_name == x){ is_sec = true; count = response.secondary.length;} 

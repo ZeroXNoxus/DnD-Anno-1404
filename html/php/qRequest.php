@@ -51,7 +51,7 @@ function qInsert(){
     for ($i = 0; $i < count($keywords); $i++) {
         $seperated = explode("=", $keywords[$i]);
         if($i == 0){
-            $sql .= $seperated[1];
+            $sql .= '`dnd 5e anno 1404`.'.$seperated[1].'`';
         } else {
             $rows .= $seperator;
             $rows .= $seperated[0];
@@ -82,7 +82,7 @@ function qUpdate(){
     for ($i = 0; $i < count($keywords); $i++) {
         $seperated = explode("=", $keywords[$i]);
         if($i == 0){
-            $sql .= $seperated[1];
+            $sql .= '`dnd 5e anno 1404`.`'.$seperated[1].'`';
         } else if($i == 1) {
             $where .= $seperated[0]." = '".$seperated[1]."';";
         } else{
@@ -95,9 +95,9 @@ function qUpdate(){
     fetch_result($sql);
 }
 function qSelect(){
-    $sql = "SELECT * FROM ".$_GET["table"];
-    $sql_prikey = "SHOW KEYS FROM ".$_GET["table"]." WHERE Key_name = 'PRIMARY'";
-    $sql_seckey = "SHOW KEYS FROM ".$_GET["table"]." WHERE Key_name REGEXP '_idx'";
+    $sql = "SELECT * FROM `dnd 5e anno 1404`.`".$_GET["table"]."`";
+    $sql_prikey = "SHOW KEYS FROM `dnd 5e anno 1404`.`".$_GET["table"]."` WHERE Key_name = 'PRIMARY'";
+    $sql_seckey = "SHOW KEYS FROM `dnd 5e anno 1404`.`".$_GET["table"]."` WHERE Key_name REGEXP '_idx'";
     fetch_results($sql, $sql_prikey, $sql_seckey);
 }
 

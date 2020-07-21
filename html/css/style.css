@@ -16,6 +16,9 @@ body.login{background-image: url("/img/Twenty_sided_dice.svg");background-repeat
 .toolbar button:last-child{margin-right:0}
 .hidden{display:none!important}
 .ta-right{text-align:right}
+button.btn.label:not(.btn-label){text-indent: 24px}
+button.btn.label.btn-label, button.btn.label{transition: all 0.2s ease;cursor:pointer;color:#b3101d;background-color:#fff;border-radius: 0;border: 0;padding:0!important}
+.btn-label.active, .btn-label:hover{color:#fff;-webkit-box-shadow: inset 0 0px 20px 1.2rem #b3101d;-moz-box-shadow: inset 0 0px 20px 1.2rem #b3101d;box-shadow: inset 0 0px 20px 1.2rem #b3101d}
 .dataTables_wrapper *{margin:0;text-overflow:ellipsis}
 .dataTables_wrapper .row:first-child{position:fixed;top:55px;right:-90px}
 .dataTables_wrapper .row:last-child{position:fixed;bottom:0;width:100%;margin-left:-15px;margin-right:-15px}
@@ -55,8 +58,8 @@ table input.is_pri{pointer-events:none}
 #navbar.show{width:100%}
 #navbar.show ~ div{width:100%}
 #navbar .row{border:0}
-#navbar .row>div:first-child{border-left:1px solid darkgrey}
-#navbar .row>div:last-child{border-right:1px solid darkgrey}
+/* #navbar .row>div:first-child{border-left:1px solid darkgrey}
+#navbar .row>div:last-child{border-right:1px solid darkgrey} */
 .dataTables_wrapper .row:first-child{top:65px;right:35px}
 .dataTables_wrapper .row:last-child{padding-bottom:5px}
 .toolbar{margin-top:30px}
