@@ -27,13 +27,13 @@ function qDelete(){
     for ($i = 0; $i < count($keywords); $i++) {
         $seperated = explode("=", $keywords[$i]);
         if($i == 0){
-            $sql .= $seperated[1];
+            $sql .= urldecode($seperated[1]);
             $sql .= ' WHERE ';
         } else {
             $sql .= $seperator;
-            $sql .= $seperated[0];
+            $sql .= urldecode($seperated[0]);
             $sql .= ' = ';
-            $sql .= "'".$seperated[1]."'";
+            $sql .= "'".urldecode($seperated[1])."'";
             $seperator = ", ";
         }
     }
@@ -51,13 +51,13 @@ function qInsert(){
     for ($i = 0; $i < count($keywords); $i++) {
         $seperated = explode("=", $keywords[$i]);
         if($i == 0){
-            $sql .= '`dnd 5e anno 1404`.'.$seperated[1].'`';
+            $sql .= '`dnd 5e anno 1404`.'.urldecode($seperated[1]).'`';
         } else {
             $rows .= $seperator;
-            $rows .= $seperated[0];
+            $rows .= urldecode($seperated[0]);
             $values .= $seperator;
             if($seperated[1]){
-                $values .= "'".$seperated[1]."'";
+                $values .= "'".urldecode($seperated[1])."'";
             } else{
                 $values .= "DEFAULT";
             }
@@ -82,12 +82,12 @@ function qUpdate(){
     for ($i = 0; $i < count($keywords); $i++) {
         $seperated = explode("=", $keywords[$i]);
         if($i == 0){
-            $sql .= '`dnd 5e anno 1404`.`'.$seperated[1].'`';
+            $sql .= '`dnd 5e anno 1404`.`'.urldecode($seperated[1]).'`';
         } else if($i == 1) {
-            $where .= $seperated[0]." = '".$seperated[1]."';";
+            $where .= urldecode($seperated[0])." = '".urldecode($seperated[1])."';";
         } else{
             $set .= $seperator;
-            $set .= $seperated[0]." = '".$seperated[1]."'";
+            $set .= urldecode($seperated[0])." = '".urldecode($seperated[1])."'";
             $seperator = ", ";
         }
     }

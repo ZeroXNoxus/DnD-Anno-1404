@@ -82,7 +82,7 @@ function bindEventAll(tab){
         var target = e.currentTarget;
         var tab = target.dataset.tab;
         var name = target.dataset.name;
-        var new_val = $(target).val();
+        var new_val = decodeURI($(target).val());
         var selection = $(target).parent().parent().find('.is_pri');
         var index, index_name;
         if(selection.length){
