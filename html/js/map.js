@@ -3,7 +3,7 @@ $(document).ready(function(){
         crs: L.CRS.Simple
     });
 
-    var bounds = [[0,0], [8192,6144]];
+    var bounds = [[0,0], [900,1200]];
     var image = L.imageOverlay('img/World.jpg', bounds).addTo(map);
 
     map.fitBounds(bounds);
