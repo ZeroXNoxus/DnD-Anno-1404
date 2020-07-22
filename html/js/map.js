@@ -15,4 +15,10 @@ $(document).ready(function(){
     map.on('click', function(e) {
 	    c.setCoordinates(e);
     });
+    map.addControl(new L.Control.LinearMeasurement({
+        unitSystem: 'metric',
+        color: '#FF0080',
+        type: 'line'
+    }));
+  
 });
