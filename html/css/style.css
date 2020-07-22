@@ -45,6 +45,7 @@ table .tab-val{border:none;background-color:transparent;width:100%;padding:.75re
 table input.is_pri{pointer-events:none}
 .table td{padding:0!important}
 .disabled{background-color:lightgray;cursor:not-allowed;pointer-events:none!important}
+#map{height:200px;}
 @media (max-width: 767px) {
 #navbar.show+.response-area{width:66.7%;margin-left:33.3%}
 .response-area{max-width:100%}
