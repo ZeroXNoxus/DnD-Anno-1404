@@ -276,5 +276,9 @@ function getTable(tab){
         $('.toolbar').addClass('show');
         $('.resp-container table').DataTable({ paging: true });
         bindEventAll(tab);
+    }).fail(function(r){
+        console.log(r.responseText);
+        alert(r.responseText);
+        window.location = '/';
     });
 };

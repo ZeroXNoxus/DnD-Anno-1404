@@ -102,34 +102,35 @@ function qSelect(){
 }
 
 function getConnection(){
+    // Create connection
     $servername = "localhost";
     $db = "dnd 5e anno 1404";
     $username = $_COOKIE["Username"];
     $password = $_COOKIE["Password"];
     try {
+        // Try establishing connection
         $conn = new PDO('mysql:host='.$servername.';dbname='.$db.';charset=utf8mb4', $username, $password);
-    } catch(PDOException $e){
-        echo 'Connection failed: ' . $e->getMessage();
-        exit;
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (Exception $e) {
+        // Send error code and set http response code
+        http_response_code(401);
+        die("Connection failed: " . $e->getMessage());
     }
+
     return $conn;
 }
 
 
 function fetch_result($query) {    
-    // Create connection
+    // Get connection
     $conn = getConnection();
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
     $json = handleQuerry($conn, $query);
     echo $json;
 }
 
 function fetch_results($query, $query2, $query3) {    
-    // Create connection
+    // Get connection
     $conn = getConnection();
 
     $json = fill_array($conn, $query, $query2, $query3);
@@ -182,4 +183,14 @@ function fill_array($conn, $query, $query2, $query3){
     // Encode array to JSON and respond
     echo $json;
 }
+
+set_error_handler("myErrorHandler");
+function myErrorHandler($errno, $errstr, $errfile, $errline)
+{
+    error_log("$errstr in $errfile:$errline");
+    header('HTTP/1.1 500 Internal Server Error', TRUE, 500);
+    readfile("500.html");
+    exit;
+}
+
 ?>
