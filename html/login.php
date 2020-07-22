@@ -93,7 +93,71 @@
         $log_hide = '';
         if($form_type == 'login') { $type = 'Anmeldung'; $reg_hide = 'hidden'; }
         if($form_type == 'register') { $type = 'Registrierung'; $log_hide = 'hidden'; }
-        return $return = '<html> <head> <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab"/> <link rel="stylesheet" href="css/bootstrap.min.css"/> <link rel="stylesheet" href="css/style.css"/> <script type="text/javascript" src="js/jQuery-3.4.1.min.js"></script> <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script> <title>'.$type.' fehlgeschlagen</title> </head> <body class="login"> <div class="dialog"> <div> <div class="alert alert-danger">'.$string.'</div><form class="login-form '.$log_hide.'" action="login.php" method="post"><h4>Login</h4> <input id="form-type" name="form-type" type="hidden" value="login"/> <div class="form-group"><label for="login">Benutzer</label> <input id="login" class="form-control" name="login" value="'.$user.'" type="text" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></div><div class="form-group"><label for="password">Passwort</label> <input id="password" class="form-control" name="password" type="password" title="Es muss mindestens ein Gro&szlig;- und Kleinbuchstabe angegeben werden. Au&szlig;erdem muss das Passwort mindestens 8 Zeichen lang sein" value="'.$password.'" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></div><div class="row"><div class="col-4 col-md-6"><button class="btn btn-success">Login</button></div> <div class="col-8 col-md-6 ta-right"><button class="btn btn-primary switch_form md-hide">Registrierung</button><button class="btn btn-primary switch_form md-show">Zur Registrierung</button></div></div> </form> <form class="register-form '.$reg_hide.'" action="login.php" method="post"><h4>Registrierung</h4> <input id="form-type" name="form-type" type="hidden" value="register"/> <div class="form-group"><label for="user">Benutzer</label> <input id="user" class="form-control" name="user" value="'.$user.'" type="text" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></div><div class="form-group"><label for="name">Vor- und Nachname</label> <input id="name" class="form-control" name="name" placeholder="Vor- und Nachname" value="'.$_POST["name"].'" type="text" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></div><div class="form-group"><label for="password_reg">Passwort</label> <input id="password_reg" class="form-control" name="password_reg" type="password" title="Es muss mindestens ein Gro&szlig;- und Kleinbuchstabe angegeben werden. Au&szlig;erdem muss das Passwort mindestens 8 Zeichen lang sein" placeholder="Passwort" value="'.$password.'" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" required/><input id="re_pass" class="form-control" name="re_pass" type="password" title="Es muss mindestens ein Gro&szlig;- und Kleinbuchstabe angegeben werden. Au&szlig;erdem muss das Passwort mindestens 8 Zeichen lang sein" placeholder="Passwort wiederholen" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" required/></div><div class="row"><div class="col-6"><button class="btn btn-success md-show">Benutzer registrieren</button><button class="btn btn-success md-hide">Registrieren</button> </div> <div class="col-6 ta-right"><button class="btn btn-primary switch_form md-show">Zur&uuml;ck zum Login</button><button class="btn btn-primary switch_form md-hide">Login</button> </div> </form> </div></div></body>    <script>$(".switch_form").off("click"); $(".switch_form").on("click", function(e){e.stopPropagation(); e.preventDefault(); $("form").toggleClass("hidden");}); </script> </html>';
+        return $return = '
+        <html>
+            <head>
+                <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab"/>
+                <link rel="stylesheet" href="css/bootstrap.min.css"/> <link rel="stylesheet" href="css/style.css"/>
+                <script type="text/javascript" src="js/jQuery-3.4.1.min.js"></script>
+                <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+                <title>'.$type.' fehlgeschlagen</title>
+            </head>
+        <body class="login">
+            <div class="dialog">
+            <div>
+            <div class="alert alert-danger">'.$string.'</div>
+            <form class="login-form '.$log_hide.'" action="login.php" method="post">
+                <h4>Login</h4>
+                <input id="form-type" name="form-type" type="hidden" value="login"/>
+                <div class="form-group">
+                    <label for="login">Benutzer</label>
+                    <input id="login" class="form-control" name="login" value="'.$user.'" type="text" required/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Passwort</label>
+                    <input id="password" class="form-control" name="password" type="password" value="'.$password.'" required/>
+                </div>
+                <div class="row">
+                    <div class="col-4 col-md-6">
+                        <button class="btn btn-success">Login</button>
+                    </div>
+                    <div class="col-8 col-md-6 ta-right">
+                        <button class="btn btn-primary switch_form md-hide">Registrierung</button>
+                        <button class="btn btn-primary switch_form md-show">Zur Registrierung</button>
+                    </div>
+                </div>
+            </form>
+            <form class="register-form '.$reg_hide.'" action="login.php" method="post">
+                <h4>Registrierung</h4>
+                <input id="form-type" name="form-type" type="hidden" value="register"/>
+                <div class="form-group">
+                    <label for="user">Benutzer</label>
+                    <input id="user" class="form-control" name="user" value="'.$user.'" type="text" required/>
+                </div>
+                <div class="form-group">
+                    <label for="name">Vor- und Nachname</label>
+                    <input id="name" class="form-control" name="name" placeholder="Vor- und Nachname" value="'.$_POST["name"].'" type="text" required/>
+                </div>
+                <div class="form-group">
+                    <label for="password_reg">Passwort</label>
+                    <input id="password_reg" class="form-control" name="password_reg" type="password" title="Es muss mindestens ein Gro&szlig;- und Kleinbuchstabe angegeben werden. Au&szlig;erdem muss das Passwort mindestens 8 Zeichen lang sein" placeholder="Passwort" value="'.$password.'" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" required/>
+                    <input id="re_pass" class="form-control" name="re_pass" type="password" title="Es muss mindestens ein Gro&szlig;- und Kleinbuchstabe angegeben werden. Au&szlig;erdem muss das Passwort mindestens 8 Zeichen lang sein" placeholder="Passwort wiederholen" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" required/>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <button class="btn btn-success md-show">Benutzer registrieren</button>
+                        <button class="btn btn-success md-hide">Registrieren</button>
+                    </div>
+                        <div class="col-6 ta-right">
+                            <button class="btn btn-primary switch_form md-show">Zur&uuml;ck zum Login</button>
+                            <button class="btn btn-primary switch_form md-hide">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </body>
+        <script>$(".switch_form").off("click"); $(".switch_form").on("click", function(e){e.stopPropagation(); e.preventDefault(); $("form").toggleClass("hidden");}); </script> </html>';
     }
 
     function website($id){
@@ -189,6 +253,9 @@
                 </div>
                 <div id="popup-update" class="popup">
                     <div class="popup-update container-fluid"></div>
+                </div>
+                <div id="popup-map" class="popup">
+                    <div class="popup-map container-fluid"></div>
                 </div>
                 <div class="dialog load-dialog" style="display: none;">
                     <div class="loader"></div>
