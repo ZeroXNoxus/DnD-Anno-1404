@@ -17,7 +17,7 @@ $(document).ready(function(){
     });
     map.addControl(new L.Control.LinearMeasurement({
         unitSystem: 'metric',
-        color: '#FF0080',
+        color: '#2B539E',
         type: 'line'
     }));
   
