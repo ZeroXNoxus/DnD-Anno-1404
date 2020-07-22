@@ -7,4 +7,12 @@ $(document).ready(function(){
     var image = L.imageOverlay('img/World.jpg', bounds).addTo(map);
 
     map.fitBounds(bounds);
+
+    var c = new L.Control.Coordinates();
+
+    c.addTo(map);
+
+    map.on('click', function(e) {
+	    c.setCoordinates(e);
+    });
 });
