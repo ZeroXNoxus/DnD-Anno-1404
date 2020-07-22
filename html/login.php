@@ -172,14 +172,12 @@
                 <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css"> 
                 <link rel="stylesheet" href="css/style.css"> 
                 <link rel="stylesheet" href="css/loader.css">
-                <link rel="stylesheet" href="css/leaflet.css"> 
                 <script src="https://kit.fontawesome.com/7acfe39345.js" crossorigin="anonymous"></script> 
                 <script type="text/javascript" src="js/jQuery-3.4.1.min.js"></script> 
                 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script> 
                 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script> 
                 <script type="text/javascript" src="js/dataTables.bootstrap4.min.js"></script> 
                 <script type="text/javascript" src="js/script.js"></script>
-                <script type="text/javascript" src="js/leaflet.js"></script> 
                 <title>DnD 5e City Control</title> 
             </head> 
             <body>
@@ -240,7 +238,6 @@
                                     <button class="btn btn-primary edit-btn disabled"><i class="fas fa-pen"></i></button> 
                                     <button type="button" class="btn btn-primary insert-btn"><i class="fas fa-plus"></i></button> 
                                 </div>
-                                <div id="map" class="col-8 col-md-12"></div>
                                 <div class="col-8 col-md-12 response-area"> 
                                     <div id="response-container" class="resp-container"></div>
                                 </div>
@@ -261,15 +258,6 @@
                     <div class="loader"></div>
                 </div>
             </body> 
-        </html>
-        <script>	var map = L.map("map", {
-            crs: L.CRS.Simple
-        });
-    
-        var bounds = [[0,0], [1000,1000]];
-        var image = L.imageOverlay("img/World.jpg", bounds).addTo(map);
-    
-        map.fitBounds(bounds);
-    </script>';
+        </html>';
     }
    ?>
