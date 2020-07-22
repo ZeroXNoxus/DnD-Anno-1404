@@ -14,11 +14,5 @@ $(document).ready(function(){
 
     map.on('click', function(e) {
 	    c.setCoordinates(e);
-    });
-    map.addControl(new L.Control.LinearMeasurement({
-        unitSystem: 'metric',
-        color: '#2B539E',
-        type: 'line'
-    }));
-  
+    });  
 });
