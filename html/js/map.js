@@ -14,5 +14,8 @@ $(document).ready(function(){
 
     map.on('click', function(e) {
 	    c.setCoordinates(e);
-    });  
+    });
+
+    L.control.ruler().addTo(map);
+
 });
