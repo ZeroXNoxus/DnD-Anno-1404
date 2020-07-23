@@ -6,7 +6,7 @@
         $connection = get_connection();
         if($connection){
             $hashed_password = hash('sha512', $password);
-            $query = "SELECT `userId`, `username`, `hashed_pw` FROM user WHERE `hashed_pw` = '".$hashed_password."' AND `username` = '".$user."';";
+            $query = "SELECT `userId`, `username`, `hashed_pw`, `language` FROM user WHERE `hashed_pw` = '".$hashed_password."' AND `username` = '".$user."';";
             $result = $connection->prepare($query);
             $result->execute();
             $return_arr = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -15,6 +15,9 @@
                 foreach($x_value as $v => $v_value){
                     if($v == 'userId'){
                         $id = $v_value;
+                    }
+                    if($v == 'language'){
+                        $lang = $v_value;
                     }
                 }
             }
@@ -26,7 +29,7 @@
             //User existiert in der Datenbank, beginne Login
             setcookie("Username", "DnD", time()+3600);  
             setcookie("Password", "TiamatIsALittleBitch", time()+3600);
-            echo website($id);
+            echo website($id, $lang);
         }
     } else {
         //Anfrage Registrierung
@@ -51,11 +54,14 @@
                         if($v == 'userId'){
                             $id = $v_value;
                         }
+                        if($v == 'language'){
+                            $lang = $v_value;
+                        }
                     }
                 }
                 setcookie("Username", "DnD", time()+3600);  
                 setcookie("Password", "TiamatIsALittleBitch", time()+3600);
-                echo website($id);
+                echo website($id, $lang);
             } else{
                 //Username ist schon vergeben
                 echo get_login_form('Der angegebene Benutzername ist schon vergeben. Bitte versuchen Sie einen anderen Benutzernamen!');
@@ -160,7 +166,7 @@
         <script>$(".switch_form").off("click"); $(".switch_form").on("click", function(e){e.stopPropagation(); e.preventDefault(); $("form").toggleClass("hidden");}); </script> </html>';
     }
 
-    function website($id){
+    function website($id, $lang){
         return 
         '<html>
             <head> 
@@ -181,7 +187,7 @@
                 <title>DnD 5e City Control</title> 
             </head> 
             <body>
-                <div class="hidden"><span class="userId">'.$id.'</span></div>
+                <div class="hidden"><span class="userId">'.$id.'</span><span class="language">'.$lang.'</span></div>
                 <div class="content-container container-fluid"> 
                     <div class="row"> 
                         <div class="col-12"> 

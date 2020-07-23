@@ -31,6 +31,25 @@ $(document).ready(function(){
     });
 });
 
+var loc_arr = {
+    "userId":{ "de":"Benutzer-ID", "en":"User-ID" },
+    "characterId":{ "de":"Charakter-ID", "en":"Character-ID" }, 
+    "resourceId":{ "de":"Ressourcen-ID", "en":"Resource-ID" },
+    "orgId":{ "de":"Unternehmens-ID", "en":"Organisation-ID" },
+    "cityId":{ "de":"Stadt-ID", "en":"City-ID" },
+    "orgName":{ "de":"Unternehmensname", "en":"Organisation-Name" },
+    "definition":{ "de":"Definition", "en":"Definition" },
+    "name":{ "de":"Name", "en":"Name" },
+    "weight":{ "de":"Gewicht", "en":"Weight" },
+    "population":{ "de":"Einwohnerzahl", "en":"Population" }, 
+    "tax":{ "de":"Steuer", "en":"Tax" }, 
+    "copper":{ "de":"Kupfer", "en":"Copper" },
+    "silver":{ "de":"Silber", "en":"Silver" },
+    "gold":{ "de":"Gold", "en":"Gold" },
+    "cp_value":{ "de":"Kupferwert", "en":"Copper-Value" },
+    "count":{ "de":"Anzahl", "en":"Count" }
+}
+
 function bindEventAll(tab){
     var form = $('form');
     form.off('submit');
@@ -219,8 +238,12 @@ function getTable(tab, obj){
                     if(i===0){
                         table += "<thead>";
                         for(x in obj){
+                            var loc_x = x;
+                            if(loc_arr[x]){
+                                loc_x = loc_arr[x][$('.hidden span.language').text()];
+                            }
                             table += "<th>";
-                            table += x;
+                            table += loc_x;
                             table += "</th>";
                         }
                         table += "</thead>";
@@ -228,6 +251,10 @@ function getTable(tab, obj){
                     }
                     table += "<tr>";
                     for(x in obj){
+                        var loc_x = x;
+                        if(loc_arr[x]){
+                            loc_x = loc_arr[x][$('.hidden span.language').text()];
+                        }
                         var value = obj[x];
                         var is_pri = false;
                         var is_sec = false;
@@ -241,20 +268,20 @@ function getTable(tab, obj){
                         }
                         if(i == 0){
                             if(is_pri){
-                                form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control is_pri disabled' id='"+x+"'></div>";
+                                form += "<div class='col-6'><label for='"+x+"'>"+loc_x+"</label><input type='text' class='form-control is_pri disabled' id='"+x+"'></div>";
                             } else if(is_sec){
-                                form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control is_sec' id='"+x+"'></div>";
+                                form += "<div class='col-6'><label for='"+x+"'>"+loc_x+"</label><input type='text' class='form-control is_sec' id='"+x+"'></div>";
                             } else{
-                                form += "<div class='col-6'><label for='"+x+"'>"+x+"</label><input type='text' class='form-control' id='"+x+"'></div>";
+                                form += "<div class='col-6'><label for='"+x+"'>"+loc_x+"</label><input type='text' class='form-control' id='"+x+"'></div>";
                             }
                         }
                         table += "<td>";
                         if(is_pri){
-                            table += "<div class='tab-val pri' data-title='"+x+": "+value+"' title='"+x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val pri is_pri' data-tab='"+tab+"' data-name='"+x+"' data-title='"+x+": "+value+"' title='"+x+": "+value+"' value='"+value+"' />";
+                            table += "<div class='tab-val pri' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val pri is_pri' data-tab='"+tab+"' data-name='"+x+"' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"' value='"+value+"' />";
                         } else if(is_sec){
-                            table += "<div class='tab-val sec' data-title='"+x+": "+value+"' title='"+x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val is_sec' data-tab='"+tab+"' data-name='"+x+"' data-title='"+x+": "+value+"' title='"+x+": "+value+"' value='"+value+"' />";
+                            table += "<div class='tab-val sec' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val is_sec' data-tab='"+tab+"' data-name='"+x+"' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"' value='"+value+"' />";
                         }else{ 
-                            table += "<div class='tab-val' data-title='"+x+": "+value+"' title='"+x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val' data-tab='"+tab+"' data-name='"+x+"' data-title='"+x+": "+value+"' title='"+x+": "+value+"' value='"+value+"' />";
+                            table += "<div class='tab-val' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val' data-tab='"+tab+"' data-name='"+x+"' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"' value='"+value+"' />";
                         }
                         table += "</td>";
                     }
