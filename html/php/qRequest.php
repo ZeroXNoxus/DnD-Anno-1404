@@ -96,6 +96,12 @@ function qUpdate(){
 }
 function qSelect(){
     $sql = "SELECT * FROM `dnd 5e anno 1404`.`".$_GET["table"]."`";
+    if(isset ($_GET["where"])){
+        $where = str_replace(",", " = ", $_GET["where"]);
+        $where = str_replace("`", "'", $where);
+        $sql .= " WHERE ".$where;
+    }
+    
     $sql_prikey = "SHOW KEYS FROM `dnd 5e anno 1404`.`".$_GET["table"]."` WHERE Key_name = 'PRIMARY'";
     $sql_seckey = "SHOW KEYS FROM `dnd 5e anno 1404`.`".$_GET["table"]."` WHERE Key_name REGEXP '_idx'";
     fetch_results($sql, $sql_prikey, $sql_seckey);
@@ -116,10 +122,29 @@ function getConnection(){
         http_response_code(401);
         die("Connection failed: " . $e->getMessage());
     }
-
     return $conn;
 }
 
+function execute_query($conn, $sql){
+    try {
+        $result = $conn->prepare($sql);
+        $result->execute();
+    } catch (Exception $e) {
+        http_response_code(204);
+        setcookie("Failed Query", $sql, "", "index.html", "5.230.65.33");
+        die("No content was found");
+    }
+    return $result;
+}
+
+function handleQuerry($conn, $query){
+    $result = execute_query($conn, $query);
+    $json = json_encode($result);
+
+    $conn=null;
+    // Encode array to JSON and respond
+    echo $json;
+}
 
 function fetch_result($query) {    
     // Get connection
@@ -138,21 +163,10 @@ function fetch_results($query, $query2, $query3) {
     return $json;
 }
 
-function handleQuerry($conn, $query){
-    $result = $conn->prepare($query);
-    $result->execute();
-    $json = json_encode($result);
-
-    $conn=null;
-    // Encode array to JSON and respond
-    echo $json;
-}
-
-function fill_array($conn, $query, $query2, $query3){
+function fill_array($conn, $content_query, $primary_query, $secondary_query){
     $return_arr = [];
-    if($query2){
-        $result = $conn->prepare($query2);
-        $result->execute();
+    if($primary_query){
+        $result = execute_query($conn, $primary_query);
     }
     $return_arr = $result->fetchAll(PDO::FETCH_ASSOC);
     $result = null;
@@ -160,9 +174,8 @@ function fill_array($conn, $query, $query2, $query3){
     $return_arr_pri = array('primary' => $return_arr);
 
     $return_arr = [];
-    if($query3){
-        $result = $conn->prepare($query3);
-        $result->execute();
+    if($secondary_query){
+        $result = execute_query($conn, $secondary_query);
     }
     $return_arr = $result->fetchAll(PDO::FETCH_ASSOC);
     $result = null;
@@ -171,8 +184,7 @@ function fill_array($conn, $query, $query2, $query3){
 
     $return_arr = [];
     // Fetch result of SQL query
-    $result = $conn->prepare($query);
-    $result->execute();
+    $result = execute_query($conn, $content_query);
     $return_arr = $result->fetchAll(PDO::FETCH_ASSOC);
     $result = null;
     // Fill array with table data
@@ -185,12 +197,11 @@ function fill_array($conn, $query, $query2, $query3){
 }
 
 set_error_handler("myErrorHandler");
-function myErrorHandler($errno, $errstr, $errfile, $errline)
-{
+function myErrorHandler($errno, $errstr, $errfile, $errline){
     error_log("$errstr in $errfile:$errline");
     header('HTTP/1.1 500 Internal Server Error', TRUE, 500);
     readfile("500.html");
     exit;
-}
+} 
 
 ?>

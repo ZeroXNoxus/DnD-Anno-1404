@@ -187,16 +187,28 @@
                         <div class="col-12"> 
                             <div class="row justify-content-end h-100"> 
                                 <div id="navbar" class="col-4 col-md-12 no-select no-break bold show"> 
-                                    <div class="row mobile d-flex d-md-none dropright"> 
+                                    <div class="row mobile d-flex d-md-none"> 
                                         <div class="col-12 img-container"></div>
-                                        <div class="col-12 label" id="charakter">Charakter</div>
+                                        <div class="col-12 dropright">
+                                            <div class="row">
+                                                <div class="col-10 label" id="charakter">Charakter</div>
+                                                <button type="button" class="col-2 btn label btn-label btn-secondary dropdown-toggle dropdown-toggle-split" id="mobile_characterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+                                                <div class="dropdown-menu" aria-labelledby="mobile_characterDropdown">
+                                                    <div class="dropdown-item label" id="character.resource" data-where="userId,`'.$id.'`">Charakter-Inventar</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 dropright">
+                                            <div class="row">
+                                                <button type="button" class="col-10 btn label" id="ressourcen">Ressourcen</button>
+                                                <button type="button" class="col-2 btn label btn-label btn-secondary dropdown-toggle dropdown-toggle-split" id="mobile_resourceDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+                                                <div class="dropdown-menu" aria-labelledby="mobile_resourceDropdown">
+                                                    <div class="dropdown-item label" id="count.resources">Ressourcen gesamt</div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-12 label" id="unternehmen">Unternehmen</div>
                                         <div class="col-12 label" id="stadt">Stadt</div>
-                                        <button type="button" class="col-10 btn label" id="ressourcen">Ressourcen</button>
-                                        <button type="button" class="col-2 btn label btn-label btn-secondary dropdown-toggle dropdown-toggle-split" id="mobile_resourceDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
-                                        <div class="dropdown-menu" aria-labelledby="mobile_resourceDropdown">
-                                            <div class="dropdown-item label" id="count.resources">Ressourcen gesammt</div>
-                                        </div>
                                         <div class="col-12 label" id="lager">Lager</div>
                                         <div class="col-12 mt-auto link"><a data-ajax="false" href="index.html?aktion=logout">Logout <i class="fas fa-sign-out-alt"></i></a></div>
                                     </div>
@@ -204,13 +216,21 @@
                                         <div class="col-12"> 
                                             <div class="row"> 
                                                 <div class="col-2 col-lg-1 img-container"></div>
-                                                <div class="col-2 col-lg-1 label" id="charakter">Charakter</div>
+                                                <div class="col-2 col-lg-1">
+                                                    <div class="row">
+                                                        <button type="button" class="col-10 btn label" id="charakter">Charakter</button>
+                                                        <button type="button" class="col-2 btn label btn-label btn-secondary dropdown-toggle dropdown-toggle-split" id="characterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+                                                        <div class="dropdown-menu" aria-labelledby="characterDropdown">
+                                                            <div class="dropdown-item label" id="character.resource" data-where="userId,`'.$id.'`">Charakter-Inventar</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="col-2 col-lg-1">
                                                     <div class="row">
                                                         <button type="button" class="col-10 btn label" id="ressourcen">Ressourcen</button>
                                                         <button type="button" class="col-2 btn label btn-label btn-secondary dropdown-toggle dropdown-toggle-split" id="resourceDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
                                                         <div class="dropdown-menu" aria-labelledby="resourceDropdown">
-                                                            <div class="dropdown-item label" id="count.resources">Ressourcen gesammt</div>
+                                                            <div class="dropdown-item label" id="count.resources">Ressourcen gesamt</div>
                                                         </div>
                                                     </div>
                                                 </div>
