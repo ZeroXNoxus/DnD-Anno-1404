@@ -182,7 +182,8 @@
                 <script type="text/javascript" src="js/jQuery-3.4.1.min.js"></script> 
                 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script> 
                 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script> 
-                <script type="text/javascript" src="js/dataTables.bootstrap4.min.js"></script> 
+                <script type="text/javascript" src="js/dataTables.bootstrap4.min.js"></script>
+                <script type="text/javascript" src="js/loader.js"></script>
                 <script type="text/javascript" src="js/script.js"></script>
                 <title>DnD 5e City Control</title> 
             </head> 
@@ -281,7 +282,30 @@
                     <div class="popup-map container-fluid"></div>
                 </div>
                 <div class="dialog load-dialog" style="display: none;">
-                    <div class="loader"></div>
+                    <section class="cube-container">
+                        <div id="cube" class="show-20">
+                        <figure class="face01">1</figure>
+                        <figure class="face02">2</figure>
+                        <figure class="face03">3</figure>
+                        <figure class="face04">4</figure>
+                        <figure class="face05">5</figure>
+                        <figure class="face06">6</figure>
+                        <figure class="face07">7</figure>
+                        <figure class="face08">8</figure>
+                        <figure class="face09">9</figure>
+                        <figure class="face10">10</figure>
+                        <figure class="face11">11</figure>
+                        <figure class="face12">12</figure>
+                        <figure class="face13">13</figure>
+                        <figure class="face14">14</figure>
+                        <figure class="face15">15</figure>
+                        <figure class="face16">16</figure>
+                        <figure class="face17">17</figure>
+                        <figure class="face18">18</figure>
+                        <figure class="face19">19</figure>
+                        <figure class="face20">20</figure>
+                        </div>
+                    </section>
                 </div>
             </body> 
         </html>';

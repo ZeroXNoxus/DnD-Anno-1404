@@ -31,24 +31,22 @@ $(document).ready(function(){
     });
 });
 
-var loc_arr = {
-    "userId":{ "de":"Benutzer-ID", "en":"User-ID" },
-    "characterId":{ "de":"Charakter-ID", "en":"Character-ID" }, 
-    "resourceId":{ "de":"Ressourcen-ID", "en":"Resource-ID" },
-    "orgId":{ "de":"Unternehmens-ID", "en":"Organisation-ID" },
-    "cityId":{ "de":"Stadt-ID", "en":"City-ID" },
-    "orgName":{ "de":"Unternehmensname", "en":"Organisation-Name" },
-    "definition":{ "de":"Definition", "en":"Definition" },
-    "name":{ "de":"Name", "en":"Name" },
-    "weight":{ "de":"Gewicht", "en":"Weight" },
-    "population":{ "de":"Einwohnerzahl", "en":"Population" }, 
-    "tax":{ "de":"Steuer", "en":"Tax" }, 
-    "copper":{ "de":"Kupfer", "en":"Copper" },
-    "silver":{ "de":"Silber", "en":"Silver" },
-    "gold":{ "de":"Gold", "en":"Gold" },
-    "cp_value":{ "de":"Kupferwert", "en":"Copper-Value" },
-    "count":{ "de":"Anzahl", "en":"Count" }
-}
+var loc_arr = { "userId":{ "de":"Benutzer-ID", "en":"User-ID" },
+                "characterId":{ "de":"Charakter-ID", "en":"Character-ID" }, 
+                "resourceId":{ "de":"Ressourcen-ID", "en":"Resource-ID" },
+                "orgId":{ "de":"Unternehmens-ID", "en":"Organisation-ID" },
+                "cityId":{ "de":"Stadt-ID", "en":"City-ID" },
+                "orgName":{ "de":"Unternehmensname", "en":"Organisation-Name" },
+                "definition":{ "de":"Definition", "en":"Definition" },
+                "name":{ "de":"Name", "en":"Name" },
+                "weight":{ "de":"Gewicht", "en":"Weight" },
+                "population":{ "de":"Einwohnerzahl", "en":"Population" }, 
+                "tax":{ "de":"Steuer", "en":"Tax" }, 
+                "copper":{ "de":"Kupfer", "en":"Copper" },
+                "silver":{ "de":"Silber", "en":"Silver" },
+                "gold":{ "de":"Gold", "en":"Gold" },
+                "cp_value":{ "de":"Kupferwert", "en":"Copper-Value" },
+                "count":{ "de":"Anzahl", "en":"Count" } };
 
 function bindEventAll(tab){
     var form = $('form');
