@@ -191,7 +191,7 @@
                                         <div class="col-12 img-container"></div>
                                         <div class="col-12 dropright">
                                             <div class="row">
-                                                <div class="col-10 label" id="charakter">Charakter</div>
+                                                <div class="col-10 label" id="charakter" data-where="userId,`'.$id.'`">Charakter</div>
                                                 <button type="button" class="col-2 btn label btn-label btn-secondary dropdown-toggle dropdown-toggle-split" id="mobile_characterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
                                                 <div class="dropdown-menu" aria-labelledby="mobile_characterDropdown">
                                                     <div class="dropdown-item label" id="character.resource" data-where="userId,`'.$id.'`">Charakter-Inventar</div>
@@ -218,7 +218,7 @@
                                                 <div class="col-2 col-lg-1 img-container"></div>
                                                 <div class="col-2 col-lg-1">
                                                     <div class="row">
-                                                        <button type="button" class="col-10 btn label" id="charakter">Charakter</button>
+                                                        <button type="button" class="col-10 btn label" id="charakter" data-where="userId,`'.$id.'`">Charakter</button>
                                                         <button type="button" class="col-2 btn label btn-label btn-secondary dropdown-toggle dropdown-toggle-split" id="characterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
                                                         <div class="dropdown-menu" aria-labelledby="characterDropdown">
                                                             <div class="dropdown-item label" id="character.resource" data-where="userId,`'.$id.'`">Charakter-Inventar</div>
