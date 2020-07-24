@@ -29,6 +29,7 @@ $(document).ready(function(){
 
         getTable(tab, this);
     });
+    getTable("user", $('#user'));
 });
 
 var loc_arr = { "userId":{ "de":"Benutzer-ID", "en":"User-ID" },
@@ -206,10 +207,10 @@ function bindRowEvent(){
     });
 };
 
-function getTable(tab, obj){
+function getTable(tab, elem){
     var where = "";
-    if(obj.dataset.where){
-        var where = obj.dataset.where;
+    if(elem.dataset.where){
+        var where = elem.dataset.where;
     }
     $('.resp-container').empty();
     $('.popup-content').empty();
@@ -294,7 +295,12 @@ function getTable(tab, obj){
         } else{
             table = "<h4 class='text-danger'>Es wurden keine Daten f&uuml;r die Tabelle: '"+tab+"' gefunden!</h4>";
         }
-        $('.resp-container').append(table);
+        
+        if(tab == "user"){
+            $('.resp-container').empty().append(form);
+        } else {
+            $('.resp-container').empty().append(table);
+        }
         $('.popup-insert').empty();
         $('.popup-insert').append(form);
         $('.popup-insert form').addClass('insert-form');

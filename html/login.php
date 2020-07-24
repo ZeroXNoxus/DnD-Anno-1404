@@ -217,6 +217,7 @@
                                         <div class="col-12 label" id="unternehmen">Unternehmen</div>
                                         <div class="col-12 label" id="stadt">Stadt</div>
                                         <div class="col-12 label" id="lager">Lager</div>
+                                        <div class="col-12 label mt-auto" id="profil"><i class="fas fa-user"></i> Profil</div>
                                         <div class="col-12 mt-auto link"><a data-ajax="false" href="index.html?aktion=logout">Logout <i class="fas fa-sign-out-alt"></i></a></div>
                                     </div>
                                     <div class="row desktop d-none d-md-flex"> 
@@ -248,7 +249,15 @@
                                                 <div class="col-2 col-lg-1 label" id="d">d</div>
                                                 <div class="col-2 col-lg-1 label" id="e">e</div>
                                                 <div class="col-2 col-lg-1 label" id="f">f</div>
-                                                <div class="col-2 col-lg-1 ml-auto"><a data-ajax="false" href="index.html?aktion=logout">Logout <i class="fas fa-sign-out-alt"></i></a></div>
+                                                <div class="col-2 col-lg-1 ml-auto">
+                                                    <div class="row">
+                                                        <button type="button" class="col-10 btn label" id="user" data-where="userId,`'.$id.'`"><i class="fas fa-user"></i> Profil</button>
+                                                        <button type="button" class="col-2 btn label btn-label btn-secondary dropdown-toggle dropdown-toggle-split" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+                                                        <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                                            <div class="dropdown-item"><a data-ajax="false" href="index.html?aktion=logout">Logout <i class="fas fa-sign-out-alt"></i></a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-2 col-lg-1"></div>
