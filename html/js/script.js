@@ -26,28 +26,13 @@ $(document).ready(function(){
             $('#'+target).addClass('active');
         }
         var tab = this.id;
+        var where = this.dataset.where;
 
-        getTable(tab, this);
+        getTable(tab, where);
     });
-    getTable("user", $('#user'));
+    getTable("user", $('#user').data('where'));
+    $('.label#user').addClass('active');
 });
-
-var loc_arr = { "userId":{ "de":"Benutzer-ID", "en":"User-ID" },
-                "characterId":{ "de":"Charakter-ID", "en":"Character-ID" }, 
-                "resourceId":{ "de":"Ressourcen-ID", "en":"Resource-ID" },
-                "orgId":{ "de":"Unternehmens-ID", "en":"Organisation-ID" },
-                "cityId":{ "de":"Stadt-ID", "en":"City-ID" },
-                "orgName":{ "de":"Unternehmensname", "en":"Organisation-Name" },
-                "definition":{ "de":"Definition", "en":"Definition" },
-                "name":{ "de":"Name", "en":"Name" },
-                "weight":{ "de":"Gewicht", "en":"Weight" },
-                "population":{ "de":"Einwohnerzahl", "en":"Population" }, 
-                "tax":{ "de":"Steuer", "en":"Tax" }, 
-                "copper":{ "de":"Kupfer", "en":"Copper" },
-                "silver":{ "de":"Silber", "en":"Silver" },
-                "gold":{ "de":"Gold", "en":"Gold" },
-                "cp_value":{ "de":"Kupferwert", "en":"Copper-Value" },
-                "count":{ "de":"Anzahl", "en":"Count" } };
 
 function bindEventAll(tab){
     var form = $('form');
@@ -83,6 +68,54 @@ function bindEventAll(tab){
         });
         
     });
+    $('form#new_password_form').off('submit');
+    $('form#new_password_form').on('submit', function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        var elem = $('input[type=password]');
+        if(elem[0].value !== elem[1].value){ 
+            $('.repass_ne_pass').removeClass('hidden');
+            return;
+         }
+        var $this = $(this);
+        var i = 0;
+        var param = '';
+        var seperator = '';
+        var input = $this.find('input');
+        while(i<input.length){
+            param += seperator;
+            param += $(input[i]).data('name')+"="+$(input[i]).val();
+            seperator = '&';
+            i++;
+        }
+        $('.load-dialog').show();
+        $.ajax({
+            url: "php/set_password.php?table=user",
+            data: param,
+            method: "POST"
+        }).done(function(r){
+            document.cookie = "qType=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+            var lang = $('.hidden span.language').text();
+            if(lang == "en"){
+                msg = "<div class='row'><div class='col-12 alert alert-success' role='alert'>Your new password was set successfully!</div></div>";
+            } else if(lang == "de"){
+                msg = "<div class='row'><div class='col-12 alert alert-success' role='alert'>Ihr neues Passwort wurde erfolgreich gespeichert!</div></div>";
+            }
+            getTable(tab, $('#user').data('where'), msg);
+            $('.load-dialog').hide();
+            $('.popup').hide();
+        }).fail(function(r){
+            var lang = $('.hidden span.language').text();
+            if(lang == "en"){
+                msg = "<div class='row'><div class='col-12 alert alert-danger' role='alert'>There was an error trying to set your new password. Please try again!</div></div>";
+            } else if(lang == "de"){
+                msg = "<div class='row'><div class='col-12 alert alert-danger' role='alert'>Beim setzen Ihres neuen Passwort ist ein Fehler aufgetreten. Bitte Versuchen Sie es erneut!</div></div>";
+            }
+            getTable(tab, $('#user').data('where'), msg);
+            $('.load-dialog').hide();
+            $('.popup').hide();
+        });
+    });
     $('.mass-edit-btn').off('click');
     $('.mass-edit-btn').on('click', function(){
         if($(this).hasClass('btn-primary')){
@@ -95,8 +128,9 @@ function bindEventAll(tab){
         }
         $('.resp-container table .tab-val').toggleClass('hidden');
     });
-    $('.resp-container table input:not(.is_pri)').off('change');
-    $('.resp-container table input:not(.is_pri)').on('change', function(e){
+    $('.resp-container input:not(.is_pri)').off('change');
+    $('.resp-container input:not(.is_pri)').on('change', function(e){
+        if($(this).parents('form')){ return; }
         var target = e.currentTarget;
         var tab = target.dataset.tab;
         var name = target.dataset.name;
@@ -112,7 +146,7 @@ function bindEventAll(tab){
             index_name = selection.data('name');
         }
 
-        $(this).siblings().text(new_val);
+        $(this).siblings(":not(label)").text(new_val);
         document.cookie = "qType=UPDATE; path=/";
         $.ajax({
             url: "php/qRequest.php",
@@ -207,11 +241,7 @@ function bindRowEvent(){
     });
 };
 
-function getTable(tab, elem){
-    var where = "";
-    if(elem.dataset.where){
-        var where = elem.dataset.where;
-    }
+function getTable(tab, where = "", msg = ""){
     $('.resp-container').empty();
     $('.popup-content').empty();
     $('.toolbar').removeClass('show');
@@ -225,99 +255,7 @@ function getTable(tab, elem){
         url: link,
         context: document.body,
     }).done(function(r) {
-        if(r){
-            var response = JSON.parse(r);
-            if(response.content.length){
-                var table = "<table class='table table-striped table-bordered' data-page-length='25' width=''>";
-                var form = "<div class='row'><div class='col-12'><form class='popup-form' data-tab='"+tab+"' method='post'><div class='form-group col-12'><h4 class='header'>Datensatz anlegen für Tabelle '"+tab+"'</h4><div class='row'>";
-                var alt_text = tab+" mit ID '<span class='titleId'></span>' bearbeiten";
-                var i = 0;
-                while(i<response.content.length){
-                    var obj = response.content[i];
-                    if(i===0){
-                        table += "<thead>";
-                        for(x in obj){
-                            var loc_x = x;
-                            if(loc_arr[x]){
-                                loc_x = loc_arr[x][$('.hidden span.language').text()];
-                            }
-                            table += "<th>";
-                            table += loc_x;
-                            table += "</th>";
-                        }
-                        table += "</thead>";
-                        table += "<tbody>";
-                    }
-                    table += "<tr>";
-                    for(x in obj){
-                        var loc_x = x;
-                        if(loc_arr[x]){
-                            loc_x = loc_arr[x][$('.hidden span.language').text()];
-                        }
-                        var value = obj[x];
-                        var is_pri = false;
-                        var is_sec = false;
-                        if(response.primary.length){ if(response.primary[0].Column_name == x){ is_pri = true; } }
-                        if(response.secondary.length){ 
-                            count = 0;
-                            while(count<response.secondary.length){
-                                if(response.secondary[count].Column_name == x){ is_sec = true; count = response.secondary.length;} 
-                                count++;
-                            }
-                        }
-                        if(i == 0){
-                            if(is_pri){
-                                form += "<div class='col-6'><label for='"+x+"'>"+loc_x+"</label><input type='text' class='form-control is_pri disabled' id='"+x+"'></div>";
-                            } else if(is_sec){
-                                form += "<div class='col-6'><label for='"+x+"'>"+loc_x+"</label><input type='text' class='form-control is_sec' id='"+x+"'></div>";
-                            } else{
-                                form += "<div class='col-6'><label for='"+x+"'>"+loc_x+"</label><input type='text' class='form-control' id='"+x+"'></div>";
-                            }
-                        }
-                        table += "<td>";
-                        if(is_pri){
-                            table += "<div class='tab-val pri' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val pri is_pri' data-tab='"+tab+"' data-name='"+x+"' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"' value='"+value+"' />";
-                        } else if(is_sec){
-                            table += "<div class='tab-val sec' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val is_sec' data-tab='"+tab+"' data-name='"+x+"' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"' value='"+value+"' />";
-                        }else{ 
-                            table += "<div class='tab-val' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"'>"+value+"</div><input type='text' class='hidden tab-val' data-tab='"+tab+"' data-name='"+x+"' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"' value='"+value+"' />";
-                        }
-                        table += "</td>";
-                    }
-                    table += "</tr>";
-                    i++;
-                }
-                form += "</div><div class='footer'><button type='submit' class='btn btn-primary'>Submit</button></div></div></form></div></div>";
-                table += "</tbody></table>";
-            } else{
-                table = "<h4 class='text-danger'>Es wurden keine Daten f&uuml;r die Tabelle: '"+tab+"' gefunden!</h4>";
-            }
-        } else{
-            table = "<h4 class='text-danger'>Es wurden keine Daten f&uuml;r die Tabelle: '"+tab+"' gefunden!</h4>";
-        }
-        
-        if(tab == "user"){
-            $('.resp-container').empty().append(form);
-        } else {
-            $('.resp-container').empty().append(table);
-        }
-        $('.popup-insert').empty();
-        $('.popup-insert').append(form);
-        $('.popup-insert form').addClass('insert-form');
-        $('.popup-update').empty();
-        $('.popup-update').append(form);
-        $('.popup-update form').addClass('update-form');
-        var i = 0;
-        var selector = $('.update-form input');
-        while(i<selector.length){
-            selector[i].id = selector[i].id+".2";
-            i++;
-        }
-        $('.popup-update form h4').html(alt_text);
-        $('.load-dialog').hide();
-        $('.toolbar').addClass('show');
-        $('.resp-container table').DataTable({ paging: true });
-        bindEventAll(tab);
+        handle_response(r, tab, msg);
     }).fail(function(r){
         console.log(r);
         alert(r.responseText);

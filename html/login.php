@@ -184,6 +184,7 @@
                 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script> 
                 <script type="text/javascript" src="js/dataTables.bootstrap4.min.js"></script>
                 <script type="text/javascript" src="js/loader.js"></script>
+                <script type="text/javascript" src="js/response.js"></script>
                 <script type="text/javascript" src="js/script.js"></script>
                 <title>DnD 5e City Control</title> 
             </head> 
@@ -198,7 +199,7 @@
                                         <div class="col-12 img-container"></div>
                                         <div class="col-12 dropright">
                                             <div class="row">
-                                                <div class="col-10 label" id="charakter" data-where="userId,`'.$id.'`">Charakter</div>
+                                                <div class="col-10 label" id="character" data-where="userId,`'.$id.'`">Charakter</div>
                                                 <button type="button" class="col-2 btn label btn-label btn-secondary dropdown-toggle dropdown-toggle-split" id="mobile_characterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
                                                 <div class="dropdown-menu" aria-labelledby="mobile_characterDropdown">
                                                     <div class="dropdown-item label" id="character.resource" data-where="userId,`'.$id.'`">Charakter-Inventar</div>
@@ -207,17 +208,17 @@
                                         </div>
                                         <div class="col-12 dropright">
                                             <div class="row">
-                                                <button type="button" class="col-10 btn label" id="ressourcen">Ressourcen</button>
+                                                <button type="button" class="col-10 btn label" id="resource">Ressourcen</button>
                                                 <button type="button" class="col-2 btn label btn-label btn-secondary dropdown-toggle dropdown-toggle-split" id="mobile_resourceDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
                                                 <div class="dropdown-menu" aria-labelledby="mobile_resourceDropdown">
-                                                    <div class="dropdown-item label" id="count.resources">Ressourcen gesamt</div>
+                                                    <div class="dropdown-item label" id="count.resource">Ressourcen gesamt</div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 label" id="unternehmen">Unternehmen</div>
-                                        <div class="col-12 label" id="stadt">Stadt</div>
-                                        <div class="col-12 label" id="lager">Lager</div>
-                                        <div class="col-12 label mt-auto" id="profil"><i class="fas fa-user"></i> Profil</div>
+                                        <div class="col-12 label" id="company">Unternehmen</div>
+                                        <div class="col-12 label" id="city">Stadt</div>
+                                        <div class="col-12 label" id="storage">Lager</div>
+                                        <div class="col-12 label mt-auto" id="user" data-where="userId,`'.$id.'`"><i class="fas fa-user"></i> Profil</div>
                                         <div class="col-12 mt-auto link"><a data-ajax="false" href="index.html?aktion=logout">Logout <i class="fas fa-sign-out-alt"></i></a></div>
                                     </div>
                                     <div class="row desktop d-none d-md-flex"> 
@@ -226,7 +227,7 @@
                                                 <div class="col-2 col-lg-1 img-container"></div>
                                                 <div class="col-2 col-lg-1">
                                                     <div class="row">
-                                                        <button type="button" class="col-10 btn label" id="charakter" data-where="userId,`'.$id.'`">Charakter</button>
+                                                        <button type="button" class="col-10 btn label" id="character" data-where="userId,`'.$id.'`">Charakter</button>
                                                         <button type="button" class="col-2 btn label btn-label btn-secondary dropdown-toggle dropdown-toggle-split" id="characterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
                                                         <div class="dropdown-menu" aria-labelledby="characterDropdown">
                                                             <div class="dropdown-item label" id="character.resource" data-where="userId,`'.$id.'`">Charakter-Inventar</div>
@@ -235,16 +236,16 @@
                                                 </div>
                                                 <div class="col-2 col-lg-1">
                                                     <div class="row">
-                                                        <button type="button" class="col-10 btn label" id="ressourcen">Ressourcen</button>
+                                                        <button type="button" class="col-10 btn label" id="resource">Ressourcen</button>
                                                         <button type="button" class="col-2 btn label btn-label btn-secondary dropdown-toggle dropdown-toggle-split" id="resourceDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
                                                         <div class="dropdown-menu" aria-labelledby="resourceDropdown">
-                                                            <div class="dropdown-item label" id="count.resources">Ressourcen gesamt</div>
+                                                            <div class="dropdown-item label" id="count.resource">Ressourcen gesamt</div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2 col-lg-1 label" id="unternehmen">Unternehmen</div>
-                                                <div class="col-2 col-lg-1 label" id="stadt">Stadt</div>
-                                                <div class="col-2 col-lg-1 label" id="lager">Lager</div>
+                                                <div class="col-2 col-lg-1 label" id="company">Unternehmen</div>
+                                                <div class="col-2 col-lg-1 label" id="city">Stadt</div>
+                                                <div class="col-2 col-lg-1 label" id="storage">Lager</div>
                                                 <div class="col-2 col-lg-1 label" id="c">c</div>
                                                 <div class="col-2 col-lg-1 label" id="d">d</div>
                                                 <div class="col-2 col-lg-1 label" id="e">e</div>
