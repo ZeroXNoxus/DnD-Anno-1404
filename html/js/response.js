@@ -1,4 +1,4 @@
-var loc_arr = { "userId":{ "de":"Benutzer-ID", "en":"User-ID" },
+var loc_arr = { "userId":{ "de":"Benutzer-ID", "en":"User-ID", "es":"Usuario-ID"},
                 "characterId":{ "de":"Charakter-ID", "en":"Character-ID" }, 
                 "resourceId":{ "de":"Ressourcen-ID", "en":"Resource-ID" },
                 "orgId":{ "de":"Unternehmens-ID", "en":"Company-ID" },
@@ -35,9 +35,9 @@ function handle_response(r, tab, msg = ""){
             var content = msg+"<div class='row'><div class='col-12'>";
             var lang = $('.hidden span.language').text();
             if(lang == "en"){
-                content += "<h2>Welcome, <span class='full_name'></span>!</h2><h4>Edit User Data</h4><p>Here you can change your account credentials.</p></div>";
+                content += "<h2>Edit User Data</h2><h4>Welcome, <span class='full_name'></span>!</h4><p>Here you can change your account credentials.</p></div>";
             } else if(lang == "de"){
-                content += "<h2>Willkommen, <span class='full_name'></span>!</h2><h4>Benutzerdaten bearbeiten</h4><p>Hier k&ouml;nnen die Nutzerdaten ver&auml;ndert werden.</p></div>";
+                content += "<h2>Benutzerdaten bearbeiten</h2><h4>Willkommen, <span class='full_name'></span>!</h4><p>Hier k&ouml;nnen die Nutzerdaten ver&auml;ndert werden.</p></div>";
             } else{
                 content += "</h4><p></p></div>";
             }

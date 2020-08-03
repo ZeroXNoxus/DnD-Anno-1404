@@ -24,7 +24,7 @@
             $connection=null;
         }
         if(empty($return_arr)){
-            echo get_login_form('Username oder Passwort flasch! Bitte versuchen Sie es erneut oder kontaktieren Sie den System Administrator!');
+            echo get_login_form('danger','Username oder Passwort flasch! Bitte versuchen Sie es erneut oder kontaktieren Sie den System Administrator!');
         } else {
             //User existiert in der Datenbank, beginne Login
             setcookie("Username", "DnD", time()+3600);  
@@ -48,6 +48,9 @@
                 $query = "INSERT INTO `user` (`username`, `hashed_pw`, `full_name`) VALUES ('".$user."','".$hashed_password."','".$name."');";
                 $result = $connection->prepare($query);
                 $result->execute();
+                $query = "SELECT * FROM `user` WHERE `username` = `".$user."`;";
+                $result = $connection->prepare($query);
+                $result->execute();
                 $return_arr = $result->fetchAll(PDO::FETCH_ASSOC);
                 foreach($return_arr as $x => $x_value) {
                     foreach($x_value as $v => $v_value){
@@ -61,14 +64,14 @@
                 }
                 setcookie("Username", "DnD", time()+3600);  
                 setcookie("Password", "TiamatIsALittleBitch", time()+3600);
-                echo website($id, $lang);
+                echo get_login_form('success','Sie haben sich erfolgreich registriert! Sie können sich hier nun anmelden.');
             } else{
                 //Username ist schon vergeben
-                echo get_login_form('Der angegebene Benutzername ist schon vergeben. Bitte versuchen Sie einen anderen Benutzernamen!');
+                echo get_login_form('danger','Der angegebene Benutzername ist schon vergeben. Bitte versuchen Sie einen anderen Benutzernamen!');
             }
         } else{
             //Passwort ist ungleich
-            echo get_login_form('Die Passw&ouml;rter treffen nicht &uuml;berein. Bitte &uuml;berpr&uuml;fen Sie Ihre Eingabe!');
+            echo get_login_form('danger','Die Passw&ouml;rter treffen nicht &uuml;berein. Bitte &uuml;berpr&uuml;fen Sie Ihre Eingabe!');
         }
         $connection = NULL;
     }
@@ -83,7 +86,11 @@
         }
         return $conn;
     }
-    function get_login_form($string){
+    function get_login_form($state, $string){
+        $form_state = 'fehlgeschlagen';
+        if($state == 'success'){
+            $form_state = 'erfolgreich';
+        }
         if(!empty($_POST["login"])){
             $user = $_POST["login"];
         }else{
@@ -98,7 +105,13 @@
         $reg_hide = '';
         $log_hide = '';
         if($form_type == 'login') { $type = 'Anmeldung'; $reg_hide = 'hidden'; }
-        if($form_type == 'register') { $type = 'Registrierung'; $log_hide = 'hidden'; }
+        if($form_type == 'register') { 
+            if($state == 'success'){
+                $type = 'Registrierung'; $reg_hide = 'hidden'; 
+            } else {
+                $type = 'Registrierung'; $log_hide = 'hidden'; 
+            }
+        }
         return $return = '
         <html>
             <head>
@@ -107,12 +120,12 @@
                 <link rel="stylesheet" href="css/bootstrap.min.css"/> <link rel="stylesheet" href="css/style.css"/>
                 <script type="text/javascript" src="js/jQuery-3.4.1.min.js"></script>
                 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-                <title>'.$type.' fehlgeschlagen</title>
+                <title>'.$type.' '.$form_state.'</title>
             </head>
         <body class="login">
             <div class="dialog">
             <div>
-            <div class="alert alert-danger">'.$string.'</div>
+            <div class="alert alert-'.$state.'">'.$string.'</div>
             <form class="login-form '.$log_hide.'" action="login.php" method="post">
                 <h4>Login</h4>
                 <input id="form-type" name="form-type" type="hidden" value="login"/>

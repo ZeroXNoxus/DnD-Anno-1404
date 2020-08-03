@@ -130,7 +130,7 @@ function bindEventAll(tab){
     });
     $('.resp-container input:not(.is_pri)').off('change');
     $('.resp-container input:not(.is_pri)').on('change', function(e){
-        if($(this).parents('form')){ return; }
+        if($(this).parents('form').length > 0){ return; }
         var target = e.currentTarget;
         var tab = target.dataset.tab;
         var name = target.dataset.name;
