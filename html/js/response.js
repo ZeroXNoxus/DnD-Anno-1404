@@ -39,7 +39,7 @@ function handle_response(r, tab, msg = ""){
             } else if(lang == "de"){
                 content += "<h2>Benutzerdaten bearbeiten</h2><h4>Willkommen, <span class='full_name'></span>!</h4><p>Hier k&ouml;nnen die Nutzerdaten ver&auml;ndert werden.</p></div>";
             } else{
-                content += "</h4><p></p></div>";
+                content += "<p></p></div>";
             }
             var i = 0;
             var hidden_id;
@@ -95,7 +95,7 @@ function handle_response(r, tab, msg = ""){
 
             content += "<div class='col-6'><label for='password'>"+loc_x+"</label><input type='password' class='form-control' data-tab='"+tab+"' data-name='re_pass' data-title='"+loc_x+"' title='"+loc_title+"' minlength='8' pattern='(?=.*[a-z])(?=.*[A-Z]).{8,}' required /></div>";
             content += "<div class='ml-auto col-6 repass_ne_pass hidden'><div class='alert alert-danger' role='alert'>"+ne_pw+"</div></div>"
-            content += "<div class='col-12'><hr/><button type='submit' class='btn btn-primary'>Submit</button></div></div></form></div>";
+            content += "<div class='col-12' style='position:relative;'><hr/><button type='submit' class='btn btn-primary'>Submit</button><a class='btn btn-secondary' href='index.html?aktion=logout' style='position: absolute;right: 15px;'>Logout <i class='fas fa-sign-out-alt' aria-hidden='true'></i></a></div></div></form></div>";
         } else{
             if(response.content.length){
                 var content = "<table class='table table-striped table-bordered' data-page-length='25' width=''>";
@@ -167,9 +167,9 @@ function handle_response(r, tab, msg = ""){
         content = "<h4 class='text-danger'>Es wurden keine Daten f&uuml;r die Tabelle: '"+tab+"' gefunden!</h4>";
     }
     if(tab == "user"){
-        $('.resp-container').addClass('overflow-h');
+        $('.resp-container').addClass('overflowx-h');
     } else{
-        $('.resp-container').removeClass('overflow-h');
+        $('.resp-container').removeClass('overflowx-h');
     }
     $('.resp-container').empty().append(content);
     $('span.full_name').text($('input[data-name=full_name]').val());

@@ -45,7 +45,8 @@ table .pri, .popup form .is_pri{cursor:default!important;font-weight: bold;font-
 label {font-weight:bold}
 .table td{padding:0!important}
 .disabled{background-color:lightgray;cursor:not-allowed;pointer-events:none!important}
-.overflow-h{overflow:hidden}
+.overflowy-h{overflow-y:hidden}
+.overflowx-h{overflow-x:hidden}
 @media (max-width: 767px) {
 #navbar.show+.response-area{width:66.7%;margin-left:33.3%}
 .response-area{max-width:100%}
