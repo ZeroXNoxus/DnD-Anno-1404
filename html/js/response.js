@@ -96,6 +96,7 @@ function handle_response(r, tab, msg = ""){
             content += "<div class='col-6'><label for='password'>"+loc_x+"</label><input type='password' class='form-control' data-tab='"+tab+"' data-name='re_pass' data-title='"+loc_x+"' title='"+loc_title+"' minlength='8' pattern='(?=.*[a-z])(?=.*[A-Z]).{8,}' required /></div>";
             content += "<div class='ml-auto col-6 repass_ne_pass hidden'><div class='alert alert-danger' role='alert'>"+ne_pw+"</div></div>"
             content += "<div class='col-12' style='position:relative;'><hr/><button type='submit' class='btn btn-primary'>Submit</button><a class='btn btn-secondary' href='index.html?aktion=logout' style='position: absolute;right: 15px;'>Logout <i class='fas fa-sign-out-alt' aria-hidden='true'></i></a></div></div></form></div>";
+            content += "<div class='onoffswitch'><input type='checkbox' name='onoffswitch' class='onoffswitch-checkbox' id='myonoffswitch' tabindex='0' checked><label class='onoffswitch-label' for='myonoffswitch'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div>"                                   
         } else{
             if(response.content.length){
                 var content = "<table class='table table-striped table-bordered' data-page-length='25' width=''>";
@@ -181,6 +182,10 @@ function handle_response(r, tab, msg = ""){
     $('.popup-update form').addClass('update-form');
     var i = 0;
     var selector = $('.update-form input');
+    var lang = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json";
+    if($('.language').text() == "en"){
+        lang = "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json";
+    }
     while(i<selector.length){
         selector[i].id = selector[i].id+".2";
         i++;
@@ -188,6 +193,6 @@ function handle_response(r, tab, msg = ""){
     $('.popup-update form h4').html(alt_text);
     $('.load-dialog').hide();
     $('.toolbar').addClass('show');
-    $('.resp-container table').DataTable({ paging: true });
+    $('.resp-container table').DataTable({ paging: true, language: { "url": lang }, lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]] });
     bindEventAll(tab);
 }

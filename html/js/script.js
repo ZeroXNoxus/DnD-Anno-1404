@@ -1,5 +1,10 @@
 $(document).ready(function(){
     document.addEventListener('keydown', checkKey);
+    x = document.cookie.split("=")[1];
+    if(x.length){
+        $('body').addClass('dark');
+        $('.onoffswitch-checkbox').click();
+    }
     $('.nav-close-btn>.btn').on('click', function(){
         if(!$('#navbar').hasClass('show')){
             $(this).addClass('btn-danger').removeClass('btn-primary');
@@ -68,6 +73,16 @@ function bindEventAll(tab){
         });
         
     });
+    $('.onoffswitch-checkbox').off('click');
+    $('.onoffswitch-checkbox').on('click', function(e){
+        if(this.checked){
+            $('body').removeClass('dark');
+            document.cookie = "darkmode=";
+        } else{
+            $('body').addClass('dark');
+            document.cookie = "darkmode=dark";
+        }
+    });
     $('form#new_password_form').off('submit');
     $('form#new_password_form').on('submit', function(e){
         e.stopPropagation();
@@ -121,12 +136,16 @@ function bindEventAll(tab){
         if($(this).hasClass('btn-primary')){
             $(this).removeClass('btn-primary');
             $(this).addClass('btn-success');
+            $('.resp-container table div.tab-val').addClass('hidden');
+            $('.resp-container table input.tab-val').removeClass('hidden');
         } else if($(this).hasClass('btn-success')){
             $(this).removeClass('btn-success');
             $(this).addClass('btn-primary');
+            $('.resp-container table div.tab-val').removeClass('hidden');
+            $('.resp-container table input.tab-val').addClass('hidden');
 
         }
-        $('.resp-container table .tab-val').toggleClass('hidden');
+        
     });
     $('.resp-container input:not(.is_pri)').off('change');
     $('.resp-container input:not(.is_pri)').on('change', function(e){
@@ -203,6 +222,11 @@ function bindEventAll(tab){
     $('.paginate_button').on('click', function(){
         bindRowEvent();
     });
+    var x = document.cookie.split("=")[1];
+    if(x.length){
+        $('body').addClass('dark');
+        $('.onoffswitch-checkbox').click();
+    }
     bindRowEvent();
 };
 

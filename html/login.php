@@ -1,5 +1,6 @@
 <?php
     $form_type = $_POST["form-type"];
+    $dark_mode = $_COOKIE["darkmode"];
     if($form_type == 'login'){
         $user = $_POST["login"];
         $password = $_POST["password"];
@@ -27,8 +28,6 @@
             echo get_login_form('danger','Username oder Passwort flasch! Bitte versuchen Sie es erneut oder kontaktieren Sie den System Administrator!');
         } else {
             //User existiert in der Datenbank, beginne Login
-            setcookie("Username", "DnD", time()+3600);  
-            setcookie("Password", "TiamatIsALittleBitch", time()+3600);
             echo website($id, $lang);
         }
     } else {
@@ -62,8 +61,6 @@
                         }
                     }
                 }
-                setcookie("Username", "DnD", time()+3600);  
-                setcookie("Password", "TiamatIsALittleBitch", time()+3600);
                 echo get_login_form('success','Sie haben sich erfolgreich registriert! Sie können sich hier nun anmelden.');
             } else{
                 //Username ist schon vergeben
@@ -120,9 +117,10 @@
                 <link rel="stylesheet" href="css/bootstrap.min.css"/> <link rel="stylesheet" href="css/style.css"/>
                 <script type="text/javascript" src="js/jQuery-3.4.1.min.js"></script>
                 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+                <script type="text/javascript" src="js/darkmode.js"></script>
                 <title>'.$type.' '.$form_state.'</title>
             </head>
-        <body class="login">
+        <body class="login '.$dark_mode.'">
             <div class="dialog">
             <div>
             <div class="alert alert-'.$state.'">'.$string.'</div>
@@ -201,7 +199,7 @@
                 <script type="text/javascript" src="js/script.js"></script>
                 <title>DnD 5e City Control</title> 
             </head> 
-            <body>
+            <body class="'.$dark_mode.'">
                 <div class="hidden"><span class="userId">'.$id.'</span><span class="language">'.$lang.'</span></div>
                 <div class="content-container container-fluid"> 
                     <div class="row"> 
@@ -282,7 +280,7 @@
                                 <div class="d-md-none nav-close-btn">
                                     <div class="btn btn-danger"><i class="fas fa-times-circle fa-2x"></i></div>
                                 </div>
-                                <div class="col-8 col-md-12 toolbar"> 
+                                <div class="col-8 col-md-12 toolbar">
                                     <button class="btn btn-danger delete-btn disabled"><i class="fas fa-trash"></i></button>
                                     <button class="btn btn-primary mass-edit-btn"><i class="icon-list-pen"></i></button> 
                                     <button class="btn btn-primary edit-btn disabled"><i class="fas fa-pen"></i></button> 

@@ -6,12 +6,22 @@
         <link rel="stylesheet" href="css/loader.css">
         <script type="text/javascript" src="js/jQuery-3.4.1.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="js/darkmode.js"></script>
         <title>Anmeldung erforderlich</title>
     </head>
 
     <body class="login">
         <div class="dialog">
-            <div>
+            <div class="light-mode-switch">
+                <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
+                    <label class="onoffswitch-label" for="myonoffswitch">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="log-dialog">
                 <form class="login-form" action="login.php" method="post">
                     <h4>Login</h4>
                     <input id="form-type" name="form-type" type="hidden" value="login">
@@ -64,11 +74,18 @@
         </div>
     </body>
     <script>
+        $(document).ready(function(){
+            var x = document.cookie.split("=")[1];
+            if(x.length){
+                $('body').addClass('dark');
+                $('.onoffswitch-checkbox').click();
+            }
             $('.switch_form').off('click');
             $('.switch_form').on('click', function(e){
                 e.stopPropagation();
                 e.preventDefault();
                 $('form').toggleClass('hidden');
             });
+        });
     </script>
 </html>

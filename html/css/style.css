@@ -1,12 +1,47 @@
-body.login{background-image: url("/img/Twenty_sided_dice.svg");background-repeat: no-repeat;background-position: center;background-size: contain}
+/*DARK MODE*/
+.dark{color:#ffbd69 !important;background-color:#222831!important}
+body.dark.login{background-image: url("/img/Twenty_sided_dice_dark_mode.svg")}
+.dark .dialog>div, .dark .popup>div, .dark .popup form .header{background-color: #1b262c}
+.dark .form-control{background-color: #222831;border-color:#30475e;color:#ececec}
+.dark .form-control:focus{background-color: #222831;border-color:#ffbd69;box-shadow: 0 0 0 0.2rem rgba(255, 189, 105, .25)}
+.dark .form-control::placeholder {color:#495057}
+.dark .btn{color:#222831}
+
+.dark .btn.btn-primary{background-color: #602080;border-color: #602080;color: #ececec!important}
+.dark .btn.btn-secondary{background-color: #6c757d;border-color: #6c757d;color: #ececec!important}
+.dark .btn.btn-success{background-color: #ffbd69;border-color: #ffbd69}
+.dark .btn.btn-primary:hover, .dark .btn.btn-primary:active{background-color:#4b1864;border-color:#4b1864}
+.dark .btn.btn-secondary:hover, .dark .btn.btn-secondary:active{background-color: #5d656b;border-color: #5d656b}
+.dark .btn.btn-success:hover, .dark .btn.btn-success:active{background-color: #dfa65d;border-color: #dfa65d}
+.dark .btn.btn-primary:focus{box-shadow: 0 0 0 0.2rem rgba(75, 24, 100, .5)}
+.dark .btn.btn-secondary:focus{box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, .5)}
+.dark .btn.btn-success:focus{box-shadow: 0 0 0 0.2rem rgba(255, 189, 105, .5)}
+
+.dark .response-area{background-color:#222831}
+.dark p{color:#ececec}
+.dark h4{color:#ffd8a6}
+.dark #navbar{background-color:#222831;color:#ececec;-webkit-box-shadow:0 2px 4px rgba(0, 0, 0, .5);-moz-box-shadow:0 2px 4px rgba(0, 0, 0, .5);box-shadow:0 2px 4px rgba(0, 0, 0, .5)}
+.dark #navbar .label.active, .dark #navbar .label:hover{color: #ececec;-webkit-box-shadow: inset 0 0px 20px 1.2rem #602080;-moz-box-shadow: inset 0 0px 20px 1.2rem #602080;box-shadow: inset 0 0px 20px 1.2rem #602080}
+.dark #navbar button.btn.label{color:#ececec}
+.dark #navbar .img-container{background-image: url(/img/dnd_logo_dark_mode.svg)}
+.dark .toolbar .btn{color:#ececec!important}
+.dark .disabled{filter:brightness(0.4)}
+
+.dark .table, .dark .table thead th, .dark .table tbody td{border-color: #30475e}
+.dark .dataTable tbody>tr{color:#ececec}
+.dark .dataTable tbody>tr.selected {background: #602080!important;outline: 2px solid #ac65d0!important;}
+.dark .dataTable tbody>tr input{color:#ececec}
+.dark hr{border-top:1px solid rgba(236, 236, 236,0.2)}
+/*DARK MODE*/
+body.login{background-image: url("/img/Twenty_sided_dice.svg");background-repeat: no-repeat;background-position: center;background-size: contain;overflow:hidden}
 .dialog{z-index:10;top:0;width:100%;height:100%}
-.dialog>div{width:80vw;padding:15px;height:auto;top:50%;left:50%;background-color:#fff;position:absolute;transform:translate(-50%,-50%);border-radius:15px;-webkit-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);-moz-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75)}
+.dialog .log-dialog{width:80vw;padding:15px;height:auto;top:50%;left:50%;background-color:#fff;position:absolute;transform:translate(-50%,-50%);border-radius:15px;-webkit-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);-moz-box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75);box-shadow:5px 5px 5px 0 rgba(0,0,0,0.75)}
 .dialog.load-dialog{position:fixed;background:rgba(0,0,0,0.6)}
 .dialog.load-dialog>div{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
 #navbar{text-align:center;color:#b3101d;background-color:#fff;position:fixed;font-size:16px;z-index:3;left:0;width:0;height:100vh;opacity:0;-webkit-box-shadow:0 2px 4px darkgrey;-moz-box-shadow:0 2px 4px darkgrey;box-shadow:0 2px 4px darkgrey;-webkit-transition:all .5s ease;transition:all .5s ease;pointer-events:none}
 #navbar.show{width:33.3%;opacity:1;pointer-events:all}
 #navbar.show ~ div{margin-left:33.3%;width:66.7%}
-#navbar .img-container {min-height: 35px;background-repeat: no-repeat;background-position: center;background-image: url(/img/dnd-logo.svg);width: 8.333333%;height: auto}
+#navbar .img-container {min-height:35px;background-size:contain;background-repeat: no-repeat;background-position: center;background-image: url(/img/dnd_logo.svg);width: 8.333333%;height: auto}
 #navbar .label {transition: all 0.2s ease;cursor:pointer}
 #navbar .label:hover {color:#fff;-webkit-box-shadow: inset 0 0px 20px 1.2rem #b3101d;-moz-box-shadow: inset 0 0px 20px 1.2rem #b3101d;box-shadow: inset 0 0px 20px 1.2rem #b3101d}
 #navbar .label.active {color:#fff;-webkit-box-shadow: inset 0 0px 20px 1.2rem #b3101d;-moz-box-shadow: inset 0 0px 20px 1.2rem #b3101d;box-shadow: inset 0 0px 20px 1.2rem #b3101d}
@@ -17,7 +52,7 @@ body.login{background-image: url("/img/Twenty_sided_dice.svg");background-repeat
 .hidden{display:none!important}
 .ta-right{text-align:right}
 button.btn.label:not(.btn-label){text-indent: 24px}
-button.btn.label.btn-label, button.btn.label{transition: all 0.2s ease;cursor:pointer;color:#b3101d;background-color:#fff;border-radius: 0;border: 0;padding:0!important}
+button.btn.label.btn-label, button.btn.label{cursor:pointer;color:#b3101d;background-color:transparent;border-radius: 0;border: 0;padding:0!important}
 .btn-label.active, .btn-label:hover{color:#fff;-webkit-box-shadow: inset 0 0px 20px 1.2rem #b3101d;-moz-box-shadow: inset 0 0px 20px 1.2rem #b3101d;box-shadow: inset 0 0px 20px 1.2rem #b3101d}
 .dataTables_wrapper *{margin:0;text-overflow:ellipsis}
 .dataTables_wrapper .row:first-child{position:fixed;top:55px;right:-90px}
@@ -41,10 +76,10 @@ button.btn.label.btn-label, button.btn.label{transition: all 0.2s ease;cursor:po
 .popup form .form-group .row{margin-top:45px;margin-bottom:30px}
 .login-form>ul{list-style:none}
 table .tab-val{border:none;background-color:transparent;width:100%;padding:.75rem;padding-right:.25rem;padding-left:.25rem}
-table .pri, .popup form .is_pri{cursor:default!important;font-weight: bold;font-style:italic;user-select:none}
+table .pri, .popup form .is_pri{cursor:default!important;font-weight: bold;font-style:italic;user-select:none;pointer-events:none}
 label {font-weight:bold}
 .table td{padding:0!important}
-.disabled{background-color:lightgray;cursor:not-allowed;pointer-events:none!important}
+.disabled{filter:brightness(0.8);pointer-events:none!important}
 .overflowy-h{overflow-y:hidden}
 .overflowx-h{overflow-x:hidden}
 @media (max-width: 767px) {
@@ -82,4 +117,53 @@ label {font-weight:bold}
 }
 @media (min-height: 1025px) {
 .resp-container{max-height:88vh;min-height:88vh;margin-top:2vh}
+}
+.light-mode-switch{background-color:transparent!important}
+.onoffswitch {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "Light";
+    padding-left: 10px;
+    background-color: #ececec; color: #1b262c;
+}
+.onoffswitch-inner:after {
+    content: "Dark";
+    padding-right: 10px;
+    background-color: #1b262c; color: #ececec;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 18px; margin: 6px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 56px;
+    border: 2px solid #999999; border-radius: 20px;
+    transition: all 0.3s ease-in 0s; 
+}
+.dark .onoffswitch-switch {background:#ffbd69}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
 }

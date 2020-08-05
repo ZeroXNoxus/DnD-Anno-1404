@@ -111,8 +111,8 @@ function getConnection(){
     // Create connection
     $servername = "localhost";
     $db = "dnd 5e anno 1404";
-    $username = $_COOKIE["Username"];
-    $password = $_COOKIE["Password"];
+    $username = "DnD";
+    $password = "TiamatIsALittleBitch";
     try {
         // Try establishing connection
         $conn = new PDO('mysql:host='.$servername.';dbname='.$db.';charset=utf8mb4', $username, $password);
