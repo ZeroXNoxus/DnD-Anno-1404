@@ -61,7 +61,7 @@ function handle_response(r, tab, msg = ""){
                     }
                     if(is_pri){
                         hidden_id = "<input type='hidden' data-name='"+x+"' value='"+value+"' />";
-                        content += "<div class='col-6'><label for='"+x+"'>"+loc_x+"</label><input type='text' class='form-control pri is_pri disabled' data-tab='"+tab+"' data-name='"+x+"' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"' value='"+value+"' /></div>";
+                        content += "<div class='col-12'><label for='"+x+"'>"+loc_x+"</label><input type='text' class='form-control pri is_pri disabled' data-tab='"+tab+"' data-name='"+x+"' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"' value='"+value+"' /></div>";
                         content += "<div class='col-12'><hr/></div>";
                     } else if(is_sec){
                         content += "<div class='col-6'><label for='"+x+"'>"+loc_x+"</label><input type='text' class='form-control pri is_sec' data-tab='"+tab+"' data-name='"+x+"' data-title='"+loc_x+": "+value+"' title='"+loc_x+": "+value+"' value='"+value+"' /></div>";
