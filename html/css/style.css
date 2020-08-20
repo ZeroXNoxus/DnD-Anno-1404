@@ -7,13 +7,13 @@ body.dark.login{background-image: url("/img/Twenty_sided_dice_dark_mode.svg")}
 .dark .form-control::placeholder {color:#495057}
 .dark .btn{color:#222831}
 
-.dark .btn.btn-primary{background-color: #602080;border-color: #602080;color: #ececec!important}
+.dark .btn.btn-primary{background-color: #A7D129;border-color: #A7D129;color: #222831!important}
 .dark .btn.btn-secondary{background-color: #6c757d;border-color: #6c757d;color: #ececec!important}
 .dark .btn.btn-success{background-color: #ffbd69;border-color: #ffbd69}
-.dark .btn.btn-primary:hover, .dark .btn.btn-primary:active{background-color:#4b1864;border-color:#4b1864}
+.dark .btn.btn-primary:hover, .dark .btn.btn-primary:active{background-color:#A7D129;border-color:#ccff33}
 .dark .btn.btn-secondary:hover, .dark .btn.btn-secondary:active{background-color: #5d656b;border-color: #5d656b}
 .dark .btn.btn-success:hover, .dark .btn.btn-success:active{background-color: #dfa65d;border-color: #dfa65d}
-.dark .btn.btn-primary:focus{box-shadow: 0 0 0 0.2rem rgba(75, 24, 100, .5)}
+.dark .btn.btn-primary:focus{box-shadow: 0 0 0 0.2rem rgba(167, 209, 41, .5)}
 .dark .btn.btn-secondary:focus{box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, .5)}
 .dark .btn.btn-success:focus{box-shadow: 0 0 0 0.2rem rgba(255, 189, 105, .5)}
 
@@ -21,18 +21,18 @@ body.dark.login{background-image: url("/img/Twenty_sided_dice_dark_mode.svg")}
 .dark p{color:#ececec}
 .dark h4{color:#ffd8a6}
 .dark #navbar{background-color:#222831;color:#ececec;-webkit-box-shadow:0 2px 4px rgba(0, 0, 0, .5);-moz-box-shadow:0 2px 4px rgba(0, 0, 0, .5);box-shadow:0 2px 4px rgba(0, 0, 0, .5)}
-.dark #navbar .label.active, .dark #navbar .label:hover{color: #ececec;-webkit-box-shadow: inset 0 0px 20px 1.2rem #602080;-moz-box-shadow: inset 0 0px 20px 1.2rem #602080;box-shadow: inset 0 0px 20px 1.2rem #602080}
+.dark #navbar .label.active, .dark #navbar .label:hover{color: #ececec;-webkit-box-shadow: inset 0 0px 20px 1.2rem #A7D129;-moz-box-shadow: inset 0 0px 20px 1.2rem #A7D129;box-shadow: inset 0 0px 20px 1.2rem #A7D129}
 .dark #navbar button.btn.label{color:#ececec}
 .dark #navbar .img-container{background-image: url(/img/dnd_logo_dark_mode.svg)}
 .dark .toolbar .btn{color:#ececec!important}
-.dark .page-item .page-link{color:#ececec;background-color:#602080;border-color:#ac65d0}
-.dark .page-item .page-link:hover{color:#ececec;background-color:#3d1452;border-color:#633b77}
+.dark .page-item .page-link{color:#222831;background-color:#a7d129;border-color:#ccff33}
+.dark .page-item .page-link:hover{color:#222831;background-color:#ccff33;border-color:#A7D129}
 .dark .disabled{filter:brightness(0.4)}
 
 .dark .table, .dark .table thead th, .dark .table tbody td{border-color: #30475e}
 .dark .dataTable tbody>tr{color:#ececec}
-.dark .dataTable tbody>tr.selected {background: #602080!important;outline: 2px solid #ac65d0!important;}
-.dark .dataTable tbody>tr input{color:#ececec}
+.dark .dataTable tbody>tr.selected {color:#222831!important;background: #A7D129!important;outline: 2px solid #ccff33!important;}
+.dark .dataTable tbody>tr input{color:#222831}
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
