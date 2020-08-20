@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
     $('.onoffswitch-checkbox').off('click');
     $('.onoffswitch-checkbox').on('click', function(e){
         if(this.checked){
@@ -9,4 +9,3 @@ $(document).ready(function(){
             document.cookie = "darkmode=dark";
         }
     });
-});

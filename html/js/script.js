@@ -1,3 +1,8 @@
+var x = document.cookie.split("=")[1];
+if(x.length){
+    $('body').addClass('dark');
+    $('.onoffswitch-checkbox').click();
+}
 $(document).ready(function(){
     document.addEventListener('keydown', checkKey);
     x = document.cookie.split("=")[1];

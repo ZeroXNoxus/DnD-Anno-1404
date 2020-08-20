@@ -113,11 +113,11 @@
         <html>
             <head>
                 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab"/>
-                <link rel="stylesheet" href="css/bootstrap.min.css"/> <link rel="stylesheet" href="css/style.css"/>
                 <script type="text/javascript" src="js/jQuery-3.4.1.min.js"></script>
                 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
                 <script type="text/javascript" src="js/darkmode.js"></script>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab"/>
+                <link rel="stylesheet" href="css/bootstrap.min.css"/> <link rel="stylesheet" href="css/style.css"/>
                 <title>'.$type.' '.$form_state.'</title>
             </head>
         <body class="login '.$dark_mode.'">
@@ -183,12 +183,6 @@
             <head> 
                 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"> 
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab"> 
-                <link rel="stylesheet" href="css/font.css"> 
-                <link rel="stylesheet" href="css/bootstrap.min.css"> 
-                <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css"> 
-                <link rel="stylesheet" href="css/style.css"> 
-                <link rel="stylesheet" href="css/loader.css">
                 <script src="https://kit.fontawesome.com/7acfe39345.js" crossorigin="anonymous"></script> 
                 <script type="text/javascript" src="js/jQuery-3.4.1.min.js"></script> 
                 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script> 
@@ -197,6 +191,12 @@
                 <script type="text/javascript" src="js/loader.js"></script>
                 <script type="text/javascript" src="js/response.js"></script>
                 <script type="text/javascript" src="js/script.js"></script>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zilla+Slab"> 
+                <link rel="stylesheet" href="css/font.css"> 
+                <link rel="stylesheet" href="css/bootstrap.min.css"> 
+                <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css"> 
+                <link rel="stylesheet" href="css/style.css"> 
+                <link rel="stylesheet" href="css/loader.css">
                 <title>DnD 5e City Control</title> 
             </head> 
             <body class="'.$dark_mode.'">
