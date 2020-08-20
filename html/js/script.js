@@ -24,7 +24,7 @@ $(document).ready(function(){
         
     });
     $(".label:not(.btn-label)").off("click");
-    $(".label:not(.btn-label)").on("click", function(){
+    $(".label:not(.btn-label):not(#map)").on("click", function(){
         if($(this).hasClass('active')){
             return;
         }
@@ -39,6 +39,10 @@ $(document).ready(function(){
         var where = this.dataset.where;
 
         getTable(tab, where);
+    });
+    $('#map').off('click');
+    $('#map').on('click',function(e){
+        window.location.href = '/map.html';
     });
     getTable("user", $('#user').data('where'));
     $('.label#user').addClass('active');

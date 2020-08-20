@@ -229,6 +229,7 @@
                                         <div class="col-12 label" id="company">Unternehmen</div>
                                         <div class="col-12 label" id="city">Stadt</div>
                                         <div class="col-12 label" id="storage">Lager</div>
+                                        <div class="col-12 label" id="map">Karte</div>
                                         <div class="col-12 label mt-auto" id="user" data-where="userId,`'.$id.'`"><i class="fas fa-user"></i> Profil</div>
                                         <div class="col-12 mt-auto link"><a data-ajax="false" href="index.html?aktion=logout">Logout <i class="fas fa-sign-out-alt"></i></a></div>
                                     </div>
@@ -261,6 +262,7 @@
                                                 <div class="col-2 col-lg-1 label" id="d">d</div>
                                                 <div class="col-2 col-lg-1 label" id="e">e</div>
                                                 <div class="col-2 col-lg-1 label" id="f">f</div>
+                                                <div class="col-2 col-lg-1 label" id="map">Karte</div>
                                                 <div class="col-2 col-lg-1 ml-auto">
                                                     <div class="row">
                                                         <button type="button" class="col-10 btn label" id="user" data-where="userId,`'.$id.'`"><i class="fas fa-user"></i> Profil</button>
